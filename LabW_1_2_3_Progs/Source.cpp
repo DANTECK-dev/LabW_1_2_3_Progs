@@ -80,23 +80,22 @@ void firstGeneralTask() {
 
 	inputArr.open(INPUT_FILE_LOCATION);
 
-	if (!inputArr.eof()) inputArr >> size;
+	inputArr >> size;
 	arr = new int[size];
 
-	if (!inputArr.eof()) {
-		cout << "\n\n\tReading Mass: ";
-		for (int i = 0; i < size; i++) {
-			inputArr >> arr[i];
-			cout << arr[i] << ", ";
-		}
-		inputArr.close();
-	}
-	else {
-		cout << "\n\n\tFile not fonded... ";
+	if (size == 0) {
+		std::cout << "\n\n\tОшибка, файл не найден или файл пустой... ";
 		char p = _getch();
 		std::system("cls");
 		return;
-	};
+	}
+
+	cout << "\n\n\tReading Mass: ";
+	for (int i = 0; i < size; i++) {
+		inputArr >> arr[i];
+		cout << arr[i] << ", ";
+	}
+	inputArr.close();
 
 	for (int i = 0; i < size; i++) {
 		for (int j = 0; j < size-i; j++) {
@@ -238,7 +237,9 @@ void secondGeneralTask() {
 						counter++;
 					}
 				}
+
 				outputStudent.close();
+
 				if (counter > 0) {
 					cout << "\n\tСохранено в файл: " << OUTPUT_FILE_LOCATION;
 				}
