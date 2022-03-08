@@ -1,4 +1,3 @@
-//updated 07.03.2022 9:36
 #include <iostream>
 #include <Windows.h>
 #include <stdio.h>
@@ -136,8 +135,8 @@ void firstGeneralTask() {
 	таблицы. Выведите номера и фамилии студентов, у которых средний балл выше 4, в отдельный
 	файл.*/
 
-#define INPUT_FILE_LOCATION	"C:\\Users\\SAS_ЪЫЪ\\source\\repos\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\Input_Studenst.txt"
-#define OUTPUT_FILE_LOCATION "C:\\Users\\SAS_ЪЫЪ\\source\\repos\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\Output_Studenst.txt"
+#define INPUT_FILE_LOCATION	"C:\\Users\\CAMSANG\\source\\repos\\DANTECK-dev\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\Input_Studenst.txt"
+#define OUTPUT_FILE_LOCATION "C:\\Users\\CAMSANG\\source\\repos\\DANTECK-dev\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\Output_Studenst.txt"
 
 void secondGeneralTask() {
 
@@ -162,32 +161,65 @@ void secondGeneralTask() {
 		outputStr = new string[size];
 		for (int i = 0; i < size; i++) {
 			getline(inputStudent, outputStr[i]);
-			cout << outputStr[i] << endl;
+			//cout << outputStr[i] << endl;
 		}
 	}
 		cout << "\n\t1. Вывод в консоль\n\t2. Выборка по оценкам\n\t0. Выход\n\n\t";
 		int inNum;
 		cin >> inNum;
+		std::system("cls");
 		switch (inNum) {
-		case(0): {return; }
-		case(1): {
-			
-			
-
-			
-			break; 
+			case(0): {return; }
+			case(1): {
+				for (int i = 0; i < size; i++) {
+					cout <<"\t" << outputStr[i] << endl;
+				}
+				std::cout << "\n\n\tНажмите любую клавишу для выхода... "; 
+				char p = _getch(); 
+				std::system("cls"); 
+				break;
+			}
+			case(2): {
+				cout << "\n\n\tВведите оценку: ";
+				int inMark;
+				cin >> inMark;
+				int counter = 0; 
+				system("cls");
+				if (inMark <= 0 || inMark >= 5) {
+					cout << "\n\n\tВведено неверное значение... ";
+					char p = _getch();
+					system("cls");
+					break;
+				}
+				cout << endl;
+				for (int i = 0; i < size; i++) {
+					string tempStr = outputStr[i];
+					int tempLen = tempStr.length();
+					if (tempStr[tempLen-1] == inMark) {
+						cout << "\n\t" << tempLen;
+						counter++;
+					}
+				}
+				if (counter > 0) {
+					cout << "\n\n\tСохранено в файл: " << OUTPUT_FILE_LOCATION;
+				}
+				if (counter == 0) {
+					cout << "\n\n\tОшибка, нет таких";
+				}
+				
+				system("cls"); std::cout << "\n\n\tНажмите любую клавишу для выхода... ";
+				char p = _getch();
+				std::system("cls");
+				break;
+			}
+			default: {
+				std::cout << "\n\tВведено неверное значение, нажмите любую клавишу для продолжения... ";
+				char p = _getch();
+				std::system("cls");
+				break; 
+			}
 		}
-		case(2): {
-			
-			
-			break;
-		}
-		default: {
-			std::cout << "\n\tВведено неверное значение, нажмите любую клавишу для продолжения... ";
-			char p = _getch();
-			std::system("cls");
-			break;}
-		}
+		
 	}
 	std::cout << "\n\n\tНажмите любую клавишу для выхода... "; char p = _getch(); std::system("cls"); return;
 }
