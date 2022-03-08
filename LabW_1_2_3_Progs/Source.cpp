@@ -62,6 +62,15 @@ int main() {
 	выделите память под массив и считайте остальные элементы в него.
 	После считывания нужно отсортировать массив и сохранить его в другой файл.*/
 
+	//For Home PC
+#define INPUT_FILE_LOCATION		"C:\\Users\\SAS_ЪЫЪ\\source\\repos\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\1FisrtGeneralTask\\Input_Massive.txt"
+#define OUTPUT_FILE_LOCATION	"C:\\Users\\SAS_ЪЫЪ\\source\\repos\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\1FisrtGeneralTask\\Output_Massive.txt"
+
+	//For laptop Samsung
+//#define INPUT_FILE_LOCATION	"C:\\Users\\CAMSANG\\source\\repos\\DANTECK-dev\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\1FisrtGeneralTask\\Input_Massive.txt"
+//#define OUTPUT_FILE_LOCATION	"C:\\Users\\CAMSANG\\source\\repos\\DANTECK-dev\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\1FisrtGeneralTask\\Output_Massive.txt"
+
+
 void firstGeneralTask() {
 
 	int* arr;
@@ -69,7 +78,7 @@ void firstGeneralTask() {
 
 	ifstream inputArr;
 
-	inputArr.open("Input_Massive.txt", ios::in);
+	inputArr.open(INPUT_FILE_LOCATION);
 
 	if (!inputArr.eof()) inputArr >> size;
 	arr = new int[size];
@@ -99,7 +108,7 @@ void firstGeneralTask() {
 		}
 	}
 
-	ofstream outputArr("Output_Massive.txt", ios::out);
+	ofstream outputArr(OUTPUT_FILE_LOCATION);
 
 	for (int i = 0; i < size; i++) {
 		outputArr << arr[i]<<endl;
@@ -135,16 +144,16 @@ void firstGeneralTask() {
 	таблицы. Выведите номера и фамилии студентов, у которых средний балл выше 4, в отдельный
 	файл.*/
 
-#define INPUT_FILE_LOCATION	"C:\\Users\\SAS_ЪЫЪ\\source\\repos\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\Input_Studenst.txt"
-#define OUTPUT_FILE_LOCATION "C:\\Users\\SAS_ЪЫЪ\\source\\repos\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\Output_Studenst.txt"
+	//For Home PC
+#define INPUT_FILE_LOCATION		"C:\\Users\\SAS_ЪЫЪ\\source\\repos\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\2SecondGeneralTask\\Input_Studenst.txt"
+#define OUTPUT_FILE_LOCATION	"C:\\Users\\SAS_ЪЫЪ\\source\\repos\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\2SecondGeneralTask\\Output_Studenst.txt"
 
-
-//#define INPUT_FILE_LOCATION	"C:\\Users\\SAS_ЫЪЫ\\source\\repos\\DANTECK-dev\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\Input_Studenst.txt"
-//#define OUTPUT_FILE_LOCATION "C:\\Users\\CAMSANG\\source\\repos\\DANTECK-dev\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\Output_Studenst.txt"
+	//For laptop Samsung
+//#define INPUT_FILE_LOCATION	"C:\\Users\\CAMSANG\\source\\repos\\DANTECK-dev\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\2SecondGeneralTask\\Input_Studenst.txt"
+//#define OUTPUT_FILE_LOCATION	"C:\\Users\\CAMSANG\\source\\repos\\DANTECK-dev\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\2SecondGeneralTask\\Output_Studenst.txt"
 
 
 void secondGeneralTask() {
-
 	ifstream inputStudent;
 	ofstream outputStudent;
 	int *Num = NULL;
@@ -184,7 +193,6 @@ void secondGeneralTask() {
 			inputStudent >> Patronymic[i];
 			inputStudent >> Mark[i];
 		}
-		cout << endl;
 		inputStudent.close();
 	}
 		cout << "\n\t1. Вывод в консоль\n\t2. Выборка по оценкам\n\t0. Выход\n\n\t";
@@ -194,6 +202,7 @@ void secondGeneralTask() {
 		switch (inNum) {
 			case(0): {return; }
 			case(1): {
+				cout << endl;
 				for (int i = 0; i < size; i++) {
 					cout	<<"\t" << Num[i]	<< " " << Surame[i] 
 							<< " " << Name[i]	<< " " << Patronymic[i] 
@@ -205,7 +214,7 @@ void secondGeneralTask() {
 				break;
 			}
 			case(2): {
-				cout << "\n\n\tВведите оценку: ";
+				cout << "\n\tВведите оценку: ";
 				int inMark;
 				cin >> inMark;
 				int counter = 0; 
@@ -231,10 +240,11 @@ void secondGeneralTask() {
 				}
 				outputStudent.close();
 				if (counter > 0) {
-					cout << "\n\n\tСохранено в файл: " << OUTPUT_FILE_LOCATION;
+					cout << "\n\tСохранено в файл: " << OUTPUT_FILE_LOCATION;
 				}
 				if (counter == 0) {
-					cout << "\n\n\tОшибка, нет таких";
+					system("cls");
+					cout << "\n\tНет таких";
 				}
 				
 				std::cout << "\n\n\tНажмите любую клавишу для выхода... ";
@@ -256,6 +266,7 @@ void secondGeneralTask() {
 
 
 #pragma endregion
+//finished
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
