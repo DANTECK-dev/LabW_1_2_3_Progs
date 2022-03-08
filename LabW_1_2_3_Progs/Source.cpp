@@ -135,15 +135,22 @@ void firstGeneralTask() {
 	таблицы. Выведите номера и фамилии студентов, у которых средний балл выше 4, в отдельный
 	файл.*/
 
-#define INPUT_FILE_LOCATION	"C:\\Users\\CAMSANG\\source\\repos\\DANTECK-dev\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\Input_Studenst.txt"
-#define OUTPUT_FILE_LOCATION "C:\\Users\\CAMSANG\\source\\repos\\DANTECK-dev\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\Output_Studenst.txt"
+#define INPUT_FILE_LOCATION	"C:\\Users\\SAS_ЪЫЪ\\source\\repos\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\Input_Studenst.txt"
+#define OUTPUT_FILE_LOCATION "C:\\Users\\SAS_ЪЫЪ\\source\\repos\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\Output_Studenst.txt"
+
+
+//#define INPUT_FILE_LOCATION	"C:\\Users\\SAS_ЫЪЫ\\source\\repos\\DANTECK-dev\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\Input_Studenst.txt"
+//#define OUTPUT_FILE_LOCATION "C:\\Users\\CAMSANG\\source\\repos\\DANTECK-dev\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\Output_Studenst.txt"
+
 
 void secondGeneralTask() {
 
 	ifstream inputStudent;
-	string *outputStr = NULL;
+	ofstream outputStudent;
 	int *Num = NULL;
 	string *Name = NULL;
+	string* Surame = NULL;
+	string* Patronymic = NULL;
 	int *Mark = NULL;
 	int size = 0;
 	
@@ -158,11 +165,27 @@ void secondGeneralTask() {
 			std::system("cls");
 			return;
 		}
-		outputStr = new string[size];
+		Num = new int[size];			
+		Name = new string[size];		
+		Surame = new string[size];		
+		Patronymic = new string[size];	
+		Mark = new int[size];			
+
 		for (int i = 0; i < size; i++) {
-			getline(inputStudent, outputStr[i]);
-			//cout << outputStr[i] << endl;
+			Num[i] = { 0 };
+			Name[i] = { "None" };
+			Surame[i] = { "None" };
+			Patronymic[i] = { "None" };
+			Mark[i] = { 0 };
+
+			inputStudent >> Num[i];
+			inputStudent >> Surame[i];
+			inputStudent >> Name[i];
+			inputStudent >> Patronymic[i];
+			inputStudent >> Mark[i];
 		}
+		cout << endl;
+		inputStudent.close();
 	}
 		cout << "\n\t1. Вывод в консоль\n\t2. Выборка по оценкам\n\t0. Выход\n\n\t";
 		int inNum;
@@ -172,7 +195,9 @@ void secondGeneralTask() {
 			case(0): {return; }
 			case(1): {
 				for (int i = 0; i < size; i++) {
-					cout <<"\t" << outputStr[i] << endl;
+					cout	<<"\t" << Num[i]	<< " " << Surame[i] 
+							<< " " << Name[i]	<< " " << Patronymic[i] 
+							<< " " << Mark[i]	<< endl;
 				}
 				std::cout << "\n\n\tНажмите любую клавишу для выхода... "; 
 				char p = _getch(); 
@@ -185,21 +210,26 @@ void secondGeneralTask() {
 				cin >> inMark;
 				int counter = 0; 
 				system("cls");
-				if (inMark <= 0 || inMark >= 5) {
+				if (inMark <= 0 || inMark > 5) {
 					cout << "\n\n\tВведено неверное значение... ";
 					char p = _getch();
 					system("cls");
 					break;
 				}
 				cout << endl;
+				outputStudent.open(OUTPUT_FILE_LOCATION);
 				for (int i = 0; i < size; i++) {
-					string tempStr = outputStr[i];
-					int tempLen = tempStr.length();
-					if (tempStr[tempLen-1] == inMark) {
-						cout << "\n\t" << tempLen;
+					if (Mark[i] == inMark) {
+						cout			<<"\t" << Num[i]	<< " " << Surame[i] 
+										<< " " << Name[i]	<< " " << Patronymic[i] 
+										<< " " << Mark[i]	<< endl;
+						outputStudent	<< Num[i] << " "	<< Surame[i]
+										<< " " << Name[i]	<< " " << Patronymic[i]
+										<< " " << Mark[i]	<< endl;
 						counter++;
 					}
 				}
+				outputStudent.close();
 				if (counter > 0) {
 					cout << "\n\n\tСохранено в файл: " << OUTPUT_FILE_LOCATION;
 				}
@@ -207,7 +237,7 @@ void secondGeneralTask() {
 					cout << "\n\n\tОшибка, нет таких";
 				}
 				
-				system("cls"); std::cout << "\n\n\tНажмите любую клавишу для выхода... ";
+				std::cout << "\n\n\tНажмите любую клавишу для выхода... ";
 				char p = _getch();
 				std::system("cls");
 				break;
