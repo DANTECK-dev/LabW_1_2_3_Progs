@@ -62,13 +62,8 @@ int main() {
 	выделите память под массив и считайте остальные элементы в него.
 	После считывания нужно отсортировать массив и сохранить его в другой файл.*/
 
-	//For Home PC
-#define INPUT_FILE_LOCATION		"C:\\Users\\SAS_ЪЫЪ\\source\\repos\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\1FisrtGeneralTask\\Input_Massive.txt"
-#define OUTPUT_FILE_LOCATION	"C:\\Users\\SAS_ЪЫЪ\\source\\repos\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\1FisrtGeneralTask\\Output_Massive.txt"
-
-	//For laptop Samsung
-//#define INPUT_FILE_LOCATION	"C:\\Users\\CAMSANG\\source\\repos\\DANTECK-dev\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\1FisrtGeneralTask\\Input_Massive.txt"
-//#define OUTPUT_FILE_LOCATION	"C:\\Users\\CAMSANG\\source\\repos\\DANTECK-dev\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\1FisrtGeneralTask\\Output_Massive.txt"
+#define INPUT_FILE_LOCATION		"Input_Massive.txt"
+#define OUTPUT_FILE_LOCATION	"Output_Massive.txt"
 
 
 void firstGeneralTask() {
@@ -143,14 +138,8 @@ void firstGeneralTask() {
 	таблицы. Выведите номера и фамилии студентов, у которых средний балл выше 4, в отдельный
 	файл.*/
 
-	//For Home PC
-#define INPUT_FILE_LOCATION		"C:\\Users\\SAS_ЪЫЪ\\source\\repos\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\2SecondGeneralTask\\Input_Studenst.txt"
-#define OUTPUT_FILE_LOCATION	"C:\\Users\\SAS_ЪЫЪ\\source\\repos\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\2SecondGeneralTask\\Output_Studenst.txt"
-
-	//For laptop Samsung
-//#define INPUT_FILE_LOCATION	"C:\\Users\\CAMSANG\\source\\repos\\DANTECK-dev\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\2SecondGeneralTask\\Input_Studenst.txt"
-//#define OUTPUT_FILE_LOCATION	"C:\\Users\\CAMSANG\\source\\repos\\DANTECK-dev\\LabW_1_2_3_Progs\\LabW_1_2_3_Progs\\2SecondGeneralTask\\Output_Studenst.txt"
-
+#define INPUT_FILE_LOCATION		"Input_Students.txt"
+#define OUTPUT_FILE_LOCATION	"Output_Students.txt"
 
 void secondGeneralTask() {
 	ifstream inputStudent;
@@ -180,12 +169,6 @@ void secondGeneralTask() {
 		Mark = new int[size];			
 
 		for (int i = 0; i < size; i++) {
-			Num[i] = { 0 };
-			Name[i] = { "None" };
-			Surame[i] = { "None" };
-			Patronymic[i] = { "None" };
-			Mark[i] = { 0 };
-
 			inputStudent >> Num[i];
 			inputStudent >> Surame[i];
 			inputStudent >> Name[i];
@@ -290,16 +273,16 @@ struct person {
 	}Data;
 };
 
-void fillClients(person* head, person* tail, person* clients);
+void fillClients		(person*& head, person*& tail, person*& clients);
 
-void addClients(person* head, person* tail, person* clients);
-void sortClients(person* head, person* tail, person* clients);
-void transformClients(person* head, person* tail, person* clients);
-void delClients(person*& head, person*& tail, person*& clients);
-void showClients(person* head, person* tail, person* clients);
-void searchClients(person* head, person* tail, person* clients);
-//void selectionClients	(person* clients, int* counter);
-
+void addClients			(person*& head, person*& tail, person*& clients);
+void sortClients		(person*& head, person*& tail, person*& clients);
+void transformClients	(person*& head, person*& tail, person*& clients);
+void delClients			(person*& head, person*& tail, person*& clients);
+void showClients		(person*& head, person*& tail, person*& clients);
+void searchClients		(person*& head, person*& tail, person*& clients);
+void saveClients		(person*& head, person*& tail, person*& clients);
+void downloadClients	(person*& head, person*& tail, person*& clients);
 
 void individualTask() {										//<<<<--------main индивидуального задания
 
@@ -398,7 +381,7 @@ void individualTask() {										//<<<<--------main индивидуального задания
 }
 //finished
 
-void fillClients(person* head, person* tail, person* clients) {
+void fillClients(person*& head, person*& tail, person*& clients) {
 	string surnames[10] = { "Wallace",		"Сафонова", "Виноградов",
 			"Зотова",		"Шапошников",	"Brandon",	"Дементьев",
 			"Корнев",		"Пономарев",	"Ефремова" };
@@ -455,7 +438,7 @@ void fillClients(person* head, person* tail, person* clients) {
 }
 //finished
 
-void addClients(person* head, person* tail, person* clients) {
+void addClients(person*& head, person*& tail, person*& clients) {
 	std::cout << "\n\n\tДобавление клиента\n";
 	string	newSurname = { "None" };
 	string	newName = { "None" };
@@ -500,7 +483,7 @@ void addClients(person* head, person* tail, person* clients) {
 };
 //finished
 
-void sortClients(person* head, person* tail, person* clients) {
+void sortClients(person*& head, person*& tail, person*& clients) {
 
 	std::cout << "\n\tСортировать всех клиентов по\n";
 	std::cout << "\n\t1. Фамилии\t2. Имя\t0.Выход\n\n\t";
@@ -563,7 +546,7 @@ void sortClients(person* head, person* tail, person* clients) {
 }
 //finished
 
-void transform(person* head, person* tail, person* clients) {
+void transform(person*& head, person*& tail, person*& clients) {
 	std::cout << "\n\n\tКакие данные изменить\n"
 		<< "\n\t1. Фамилию - " << clients->Data.Surname
 		<< "\n\t2. Имя - " << clients->Data.Name
@@ -592,7 +575,7 @@ void transform(person* head, person* tail, person* clients) {
 	}
 	std::system("cls");
 }
-void transformClients(person* head, person* tail, person* clients) {
+void transformClients(person*& head, person*& tail, person*& clients) {
 	std::cout << "\n\n\tИзменить данные клиента\n\n\t\tПоиск по \n\n\t1. ФИО\t2. Счёту в базе\t0. Выход\n\n\t";
 	int inputNum;
 	cin >> inputNum;
@@ -836,7 +819,7 @@ void delClients(person*& head, person*& tail, person*& clients) {
 }
 
 
-void showClients(person* head, person* tail, person* clients) {
+void showClients(person*& head, person*& tail, person*& clients) {
 	std::cout << "\n\n\tВывести список клиентов\n\n";
 
 	int maxLenSurname = 7;
@@ -928,11 +911,11 @@ void showClients(person* head, person* tail, person* clients) {
 }
 //finished
 
-void show(person* clients) {
+void show(person*& clients) {
 	std::cout << "\n\n\tФИО: " << clients->Data.Surname << " " << clients->Data.Name << " " << clients->Data.Patronymic << " Адресс: "
 		<< clients->Data.Address << "\n\tТелефоный номер: " << clients->Data.PhoneNum << " День оплаты: " << clients->Data.PayDay << " Сумма: " << clients->Data.Summ;
 }
-void searchClients(person* head, person* tail, person* clients) {
+void searchClients(person*& head, person*& tail, person*& clients) {
 	std::cout << "\n\tПоиск клиента по базе";
 	std::cout << "\n\n\tВведите Фамилию или Имя или Отчество\t0. Выход\n\n\t";
 	string inputStr;
