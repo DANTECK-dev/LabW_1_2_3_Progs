@@ -258,6 +258,8 @@ void secondGeneralTask() {
 
 #pragma region individualTask
 
+#define INPUT_FILE_LOCATION		"Input_Clients.txt"
+#define OUTPUT_FILE_LOCATION	"Output_Clients.txt"
 
 struct person {
 	person* next = NULL;
@@ -287,8 +289,7 @@ void downloadClients	(person*& head, person*& tail, person*& clients);
 void individualTask() {										//<<<<--------main индивидуального задания
 
 	/*Структура «Покупатель»: Дата покупки; ФИО; домашний адрес; номер телефона; сумма
-	покупки. Вычисляемое значение – общая сумма покупки.
-	*/
+	покупки. Вычисляемое значение – общая сумма покупки.*/
 
 	/*1) Создание нового элемента массива структур (ввод его данных);
 	2) Сортировка массива структур;
@@ -300,6 +301,18 @@ void individualTask() {										//<<<<--------main индивидуального задания
 	значение по всему массиву, указанное в вашем варианте.
 	6) Поиск в массиве структур по заданному параметру (самостоятельно выберите поле
 	структуры и реализуйте поиск по нему). То есть это вывод, но только определенных данных.*/
+
+	/* 3 Laba
+	Измените программу индивидуального задания прошлой лабораторной работы. Добавьте
+	в меню выбора новые действия пользователя «Сохранение» и «Загрузка».
+	Действие «Сохранение» должно выполнять сохранение в файл всех данных вашего
+	списка. При этом пользователю должен предоставляться выбор: сохранить в файл по
+	умолчанию (придумайте название, к примеру, list.data) или пользователь сам вводит название
+	файла, в который нужно сохранить список.
+	Действие «Загрузить» должно выполнять загрузку данных вашего списка (заполнять
+	список) из файла в память программы. При этом пользователю также должен предоставляться
+	выбор: загрузить из файла по умолчанию или пользователь сам вводит название файла, из
+	которого нужно загрузить список*/
 
 
 	person* head = NULL;
@@ -346,6 +359,8 @@ void individualTask() {										//<<<<--------main индивидуального задания
 		std::cout << "\n\t    ----== 4. Удалить  данные клиента ==----    ";
 		std::cout << "\n\t    ----== 5. Вывести список клиентов ==----    ";
 		std::cout << "\n\t     ----== 6. Поиск клиента по базе ==----     ";
+		std::cout << "\n\t  ----== 7. Сохранить все  данные в файл==----  ";
+		std::cout << "\n\t   ----== 8. Загрузить данные из файла ==----  ";
 		std::cout << "\n\t              ----== 0.  Выход ==----           \n\t";
 		int inputNum;
 		std::cin >> inputNum;
@@ -353,12 +368,14 @@ void individualTask() {										//<<<<--------main индивидуального задания
 		clients = head;
 		switch (inputNum) {
 		case(0): {std::cout << "\n\thead, Выход\n"; return; }
-		case(1): {addClients(head, tail, clients); break; }
-		case(2): {sortClients(head, tail, clients); break; }
-		case(3): {transformClients(head, tail, clients); break; }
-		case(4): {delClients(head, tail, clients); break; }
-		case(5): {showClients(head, tail, clients); break; }
-		case(6): {searchClients(head, tail, clients); break; }
+		case(1): {addClients		(head, tail, clients); break; }
+		case(2): {sortClients		(head, tail, clients); break; }
+		case(3): {transformClients	(head, tail, clients); break; }
+		case(4): {delClients		(head, tail, clients); break; }
+		case(5): {showClients		(head, tail, clients); break; }
+		case(6): {searchClients		(head, tail, clients); break; }
+		case(7): {saveClients		(head, tail, clients); break; }
+		case(8): {downloadClients	(head, tail, clients); break; }
 		default: {
 			std::cout << "\n\tВведено неверное значение, нажмите любую клавишу для продолжения... ";
 			char p = _getch();
@@ -937,6 +954,50 @@ void searchClients(person*& head, person*& tail, person*& clients) {
 	std::system("cls");
 }
 //finished
+
+void saveClients(person*& head, person*& tail, person*& clients) {
+	string defaultFileName = (OUTPUT_FILE_LOCATION);
+	cout << "\n\n\t1. Сохранить в файле с названием " << OUTPUT_FILE_LOCATION
+		<< " с кодом\n\t2. Изменить название файла\n\t0. Выход\n\n\t";
+	int inNum;
+	cin >> inNum;
+	system("cls");
+	switch (inNum) {
+	case(0): {
+		cout << "\n\n\tНажмите любую клавишу..."; 
+		char p = _getch();
+		system("cls");
+		break;
+	}
+	case(1): {
+		ofstream outClients(OUTPUT_FILE_LOCATION);
+		clients = head;
+		while (true) {
+			outClients	<< clients->Data.Surname	<< " " << clients->Data.Name	<< " "
+						<< clients->Data.Patronymic << " " << clients->Data.Address << " "
+						<< clients->Data.PhoneNum	<< " " << clients->Data.PayDay	<< " "
+						<< clients->Data.Summ		<< endl;
+			if (clients == tail) break;
+			clients = clients->next;
+		}
+		cout << "\n\n\tСохранено...";
+		char p = _getch();
+		system("cls");
+		break; 
+	}
+	case(2): {
+		cout << "\n\n\tНажмите любую клавишу...";
+		break; 
+	}
+	default: {break; }
+	}
+}
+
+
+void downloadClients(person*& head, person*& tail, person*& clients){
+
+}
+
 
 #pragma endregion
 
