@@ -1101,7 +1101,7 @@ void downloadClients(person*& head, person*& tail, person*& clients){
 		getline(inClients, clients->Data.Address);
 		getline(inClients, clients->Data.PhoneNum);
 		getline(inClients, clients->Data.PayDay);
-		inClients >> clients->Data.Summ;
+		inClients >> clients->Data.Summ; 
 		for (int i = 0; i < size; i++) {
 			clients = clients->next = new person;
 			//clinets=clients
