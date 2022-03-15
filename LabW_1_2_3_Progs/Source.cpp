@@ -62,8 +62,8 @@ int main() {
 	выделите память под массив и считайте остальные элементы в него.
 	После считывания нужно отсортировать массив и сохранить его в другой файл.*/
 
-#define INPUT_FILE_LOCATION		"Input_Massive.txt"
-#define OUTPUT_FILE_LOCATION	"Output_Massive.txt"
+#define FIRST_INPUT_FILE_LOCATION		"Input_Massive.txt"
+#define FIRST_OUTPUT_FILE_LOCATION	"Output_Massive.txt"
 
 
 void firstGeneralTask() {
@@ -73,7 +73,7 @@ void firstGeneralTask() {
 
 	ifstream inputArr;
 
-	inputArr.open(INPUT_FILE_LOCATION);
+	inputArr.open(FIRST_INPUT_FILE_LOCATION);
 
 	inputArr >> size;
 	arr = new int[size];
@@ -85,10 +85,10 @@ void firstGeneralTask() {
 		return;
 	}
 
-	cout << "\n\n\tReading Mass: ";
+	std::cout << "\n\n\tReading Mass: ";
 	for (int i = 0; i < size; i++) {
 		inputArr >> arr[i];
-		cout << arr[i] << ", ";
+		std::cout << arr[i] << ", ";
 	}
 	inputArr.close();
 
@@ -102,15 +102,15 @@ void firstGeneralTask() {
 		}
 	}
 
-	ofstream outputArr(OUTPUT_FILE_LOCATION);
+	ofstream outputArr(FIRST_OUTPUT_FILE_LOCATION);
 
 	for (int i = 0; i < size; i++) {
 		outputArr << arr[i]<<endl;
 	}
 
-	cout << "\n\n\tSorter Mass: ";
+	std::cout << "\n\n\tSorter Mass: ";
 	for (int i = 0; i < size; i++) {
-		cout << arr[i] << ", ";
+		std::cout << arr[i] << ", ";
 	}
 
 	std::cout << "\n\n\tНажмите любую клавишу для выхода... "; 
@@ -138,8 +138,8 @@ void firstGeneralTask() {
 	таблицы. Выведите номера и фамилии студентов, у которых средний балл выше 4, в отдельный
 	файл.*/
 
-#define INPUT_FILE_LOCATION		"Input_Students.txt"
-#define OUTPUT_FILE_LOCATION	"Output_Students.txt"
+#define SECOND_INPUT_FILE_LOCATION		"Input_Students.txt"
+#define SECOND_OUTPUT_FILE_LOCATION	"Output_Students.txt"
 
 void secondGeneralTask() {
 	ifstream inputStudent;
@@ -153,11 +153,11 @@ void secondGeneralTask() {
 	
 
 	while (true) {
-		inputStudent.open(INPUT_FILE_LOCATION);
+		inputStudent.open(SECOND_INPUT_FILE_LOCATION);
 	if (!inputStudent.eof()) {
 		inputStudent >> size;
 		if (size == 0) {
-			cout << "\n\n\tОшибка в исходном файле или путь файла был изменен... ";
+			std::cout << "\n\n\tОшибка в исходном файле или путь файла был изменен... ";
 			char p = _getch();
 			std::system("cls");
 			return;
@@ -177,16 +177,16 @@ void secondGeneralTask() {
 		}
 		inputStudent.close();
 	}
-		cout << "\n\t1. Вывод в консоль\n\t2. Выборка по оценкам\n\t0. Выход\n\n\t";
+	std::cout << "\n\t1. Вывод в консоль\n\t2. Выборка по оценкам\n\t0. Выход\n\n\t";
 		int inNum;
 		cin >> inNum;
 		std::system("cls");
 		switch (inNum) {
 			case(0): {return; }
 			case(1): {
-				cout << endl;
+				std::cout << endl;
 				for (int i = 0; i < size; i++) {
-					cout	<<"\t" << Num[i]	<< " " << Surame[i] 
+					std::cout	<<"\t" << Num[i]	<< " " << Surame[i]
 							<< " " << Name[i]	<< " " << Patronymic[i] 
 							<< " " << Mark[i]	<< endl;
 				}
@@ -196,22 +196,22 @@ void secondGeneralTask() {
 				break;
 			}
 			case(2): {
-				cout << "\n\tВведите оценку: ";
+				std::cout << "\n\tВведите оценку: ";
 				int inMark;
 				cin >> inMark;
 				int counter = 0; 
 				system("cls");
 				if (inMark <= 0 || inMark > 5) {
-					cout << "\n\n\tВведено неверное значение... ";
+					std::cout << "\n\n\tВведено неверное значение... ";
 					char p = _getch();
 					system("cls");
 					break;
 				}
-				cout << endl;
-				outputStudent.open(OUTPUT_FILE_LOCATION);
+				std::cout << endl;
+				outputStudent.open(SECOND_OUTPUT_FILE_LOCATION);
 				for (int i = 0; i < size; i++) {
 					if (Mark[i] == inMark) {
-						cout			<<"\t" << Num[i]	<< " " << Surame[i] 
+						std::cout			<<"\t" << Num[i]	<< " " << Surame[i]
 										<< " " << Name[i]	<< " " << Patronymic[i] 
 										<< " " << Mark[i]	<< endl;
 						outputStudent	<< Num[i] << " "	<< Surame[i]
@@ -224,11 +224,11 @@ void secondGeneralTask() {
 				outputStudent.close();
 
 				if (counter > 0) {
-					cout << "\n\tСохранено в файл: " << OUTPUT_FILE_LOCATION;
+					std::cout << "\n\tСохранено в файл: " << SECOND_OUTPUT_FILE_LOCATION;
 				}
 				if (counter == 0) {
 					system("cls");
-					cout << "\n\tНет таких";
+					std::cout << "\n\tНет таких";
 				}
 				
 				std::cout << "\n\n\tНажмите любую клавишу для выхода... ";
@@ -258,8 +258,8 @@ void secondGeneralTask() {
 
 #pragma region individualTask
 
-#define INPUT_FILE_LOCATION		"Input_Clients.txt"
-#define OUTPUT_FILE_LOCATION	"Output_Clients.txt"
+#define INDIVID_INPUT_FILE_LOCATION		"Input_Clients.txt"
+#define INDIVID_OUTPUT_FILE_LOCATION	"Output_Clients.txt"
 
 struct person {
 	person* next = NULL;
@@ -275,7 +275,7 @@ struct person {
 	}Data;
 };
 
-void fillClients		(person*& head, person*& tail, person*& clients);
+//void fillClients		(person*& head, person*& tail, person*& clients);
 
 void addClients			(person*& head, person*& tail, person*& clients);
 void sortClients		(person*& head, person*& tail, person*& clients);
@@ -316,33 +316,17 @@ void individualTask() {										//<<<<--------main индивидуального задания
 
 
 	person* head = NULL;
-	head = new person;
-	person* clients = head;
-	//int* counter = new int;
-	//*counter = 0;
 	person* tail = NULL;
-	tail = new person;
-	while (true) {
+	person* clients = NULL;
+	/*while (true) {
 		if (clients->next == NULL) break;
 		clients = clients->next;
 		tail = clients;
-	}
-	clients = head;
+	 }*/
 
 	std::system("cls");
 
-	fillClients(head, tail, clients);
-	clients = head;
-	while (true) {
-		if (clients->next == NULL) break;
-		clients = clients->next;
-		tail = clients;
-	}
-	while (true) {
-		if (clients->prev == NULL) break;
-		clients = clients->prev;
-		head = clients;
-	}
+	//fillClients(head, tail, clients);
 
 	///////	   МЕНЮ    /////////
 
@@ -383,14 +367,15 @@ void individualTask() {										//<<<<--------main индивидуального задания
 			break;
 		}
 		}
-		clients = head;
+		if (tail == NULL && head == NULL) continue;
+		clients = head; 
 		while (true) {
-			if (clients->next == NULL) break;
+			if (clients->next == nullptr) break;
 			clients = clients->next;
 			tail = clients;
 		}
 		while (true) {
-			if (clients->prev == NULL) break;
+			if (clients->prev == nullptr) break;
 			clients = clients->prev;
 			head = clients;
 		}
@@ -398,7 +383,7 @@ void individualTask() {										//<<<<--------main индивидуального задания
 }
 //finished
 
-void fillClients(person*& head, person*& tail, person*& clients) {
+/*void fillClients(person*& head, person*& tail, person*& clients) {
 	string surnames[10] = { "Wallace",		"Сафонова", "Виноградов",
 			"Зотова",		"Шапошников",	"Brandon",	"Дементьев",
 			"Корнев",		"Пономарев",	"Ефремова" };
@@ -452,10 +437,11 @@ void fillClients(person*& head, person*& tail, person*& clients) {
 		clients->Data.Summ = Summs[i];
 		//(*counter)++;
 	}
-}
+}*/
 //finished
 
 void addClients(person*& head, person*& tail, person*& clients) {
+	
 	std::cout << "\n\n\tДобавление клиента\n";
 	string	newSurname = { "None" };
 	string	newName = { "None" };
@@ -475,6 +461,28 @@ void addClients(person*& head, person*& tail, person*& clients) {
 	std::cout << "\n\tСумму покупки: ";				cin >> newSumm;
 	std::system("cls");
 
+	if (tail == NULL && head == NULL) {
+			tail = new person;
+			clients = tail;
+			head = tail;
+			clients->Data.Surname = newSurname;
+			clients->Data.Name = newName;
+			clients->Data.Patronymic = newPatronymic;
+			clients->Data.Address = newAddress;
+			clients->Data.PhoneNum = "+7" + newPhoneNum;
+			clients->Data.PayDay = newPayDay;
+			clients->Data.Summ = newSumm;
+
+			std::cout << "\n\tДобавлен \n" << "\n\tфамилия: " << newSurname
+				<< "\n\tИмя: " << newName << "\n\tОтчество: " << newPatronymic
+				<< "\n\tАдресс: " << newAddress << "\n\tНомер телефона: +7" << newPhoneNum
+				<< "\n\tДень оплаты: " << newPayDay << "\n\tСумму покупки: " << newSumm;
+
+			std::cout << "\n\n\tНажмите любую клавишу для возврата в меню... ";
+			char p = _getch();
+			std::system("cls");
+			return;
+	}
 	clients = tail;
 	clients->next = new person;
 	clients->next->prev = clients;
@@ -501,7 +509,18 @@ void addClients(person*& head, person*& tail, person*& clients) {
 //finished
 
 void sortClients(person*& head, person*& tail, person*& clients) {
-
+	if (tail == NULL && head == NULL) {
+		std::cout << "\n\n\tНет данных клиентов для сортировки...";
+		char p = _getch();
+		system("cls");
+		return;
+	}
+	if (clients == head && clients == tail) {
+		std::cout << "\n\n\tМало данных клиентов для сортировки...";
+		char p = _getch();
+		system("cls");
+		return;
+	}
 	std::cout << "\n\tСортировать всех клиентов по\n";
 	std::cout << "\n\t1. Фамилии\t2. Имя\t0.Выход\n\n\t";
 	int inputNum;
@@ -593,6 +612,12 @@ void transform(person*& head, person*& tail, person*& clients) {
 	std::system("cls");
 }
 void transformClients(person*& head, person*& tail, person*& clients) {
+	if (tail == NULL && head == NULL) {
+		std::cout << "\n\n\tНет данных клиентов для изменения...";
+		char p = _getch();
+		system("cls");
+		return;
+	}
 	std::cout << "\n\n\tИзменить данные клиента\n\n\t\tПоиск по \n\n\t1. ФИО\t2. Счёту в базе\t0. Выход\n\n\t";
 	int inputNum;
 	cin >> inputNum;
@@ -705,11 +730,11 @@ void swapAndDelClients(person*& head, person*& tail, person*& clients) {
 	delete clients;
 }
 void delClients(person*& head, person*& tail, person*& clients) {
-	if (head == NULL || tail == NULL) {
-		system("cls");
-		cout << "\n\n\tСписок пуст";
+	if (tail == NULL && head == NULL) {
+		std::cout << "\n\n\tНет данных клиентов для удаления...";
 		char p = _getch();
 		system("cls");
+		return;
 	}
 	clients = head;
 	while (true) {
@@ -837,6 +862,12 @@ void delClients(person*& head, person*& tail, person*& clients) {
 
 
 void showClients(person*& head, person*& tail, person*& clients) {
+	if (tail == NULL && head == NULL) {
+		std::cout << "\n\n\tНет данных клиентов для вывода...";
+		char p = _getch();
+		system("cls");
+		return;
+	}
 	std::cout << "\n\n\tВывести список клиентов\n\n";
 
 	int maxLenSurname = 7;
@@ -933,6 +964,12 @@ void show(person*& clients) {
 		<< clients->Data.Address << "\n\tТелефоный номер: " << clients->Data.PhoneNum << " День оплаты: " << clients->Data.PayDay << " Сумма: " << clients->Data.Summ;
 }
 void searchClients(person*& head, person*& tail, person*& clients) {
+	if (tail == NULL && head == NULL) {
+		std::cout << "\n\n\tНет данных клиентов для поиска...";
+		char p = _getch();
+		system("cls");
+		return;
+	}
 	std::cout << "\n\tПоиск клиента по базе";
 	std::cout << "\n\n\tВведите Фамилию или Имя или Отчество\t0. Выход\n\n\t";
 	string inputStr;
@@ -955,22 +992,29 @@ void searchClients(person*& head, person*& tail, person*& clients) {
 }
 //finished
 
-void saveClients(person*& head, person*& tail, person*& clients) {
-	string defaultFileName = (OUTPUT_FILE_LOCATION);
-	cout << "\n\n\t1. Сохранить в файле с названием " << OUTPUT_FILE_LOCATION
-		<< " с кодом\n\t2. Изменить название файла\n\t0. Выход\n\n\t";
+void saveClients(person*& head, person*& tail, person*& clients)
+{
+	if (tail == NULL && head == NULL) {
+		std::cout << "\n\n\tНет данных клиентов для сохранения...";
+		char p = _getch();
+		system("cls");
+		return;
+	}
+	string defaultFileName = (INDIVID_OUTPUT_FILE_LOCATION);
+	std::cout << "\n\n\t1. Сохранить в файле с названием " << INDIVID_OUTPUT_FILE_LOCATION
+		<< " с исходным кодом\n\t2. Изменить название файла\n\t0. Выход\n\n\t";
 	int inNum;
 	cin >> inNum;
 	system("cls");
 	switch (inNum) {
 	case(0): {
-		cout << "\n\n\tНажмите любую клавишу..."; 
+		std::cout << "\n\n\tНажмите любую клавишу...";
 		char p = _getch();
 		system("cls");
 		break;
 	}
 	case(1): {
-		ofstream outClients(OUTPUT_FILE_LOCATION);
+		ofstream outClients(INDIVID_OUTPUT_FILE_LOCATION);
 		clients = head;
 		while (true) {
 			outClients	<< clients->Data.Surname	<< " " << clients->Data.Name	<< " "
@@ -980,22 +1024,130 @@ void saveClients(person*& head, person*& tail, person*& clients) {
 			if (clients == tail) break;
 			clients = clients->next;
 		}
-		cout << "\n\n\tСохранено...";
+		std::cout << "\n\n\tСохранено...";
 		char p = _getch();
 		system("cls");
 		break; 
 	}
 	case(2): {
-		cout << "\n\n\tНажмите любую клавишу...";
+		std::cout << "\n\n\tВведите навание выходного файла (без расширения, используя только буквы): ";
+		string newName;
+		cin.get();
+		getline(cin, newName);
+		newName += ".txt";
+		system("cls");
+		ofstream outClients(newName);
+		clients = head;
+		while (true) {
+			outClients << clients->Data.Surname << " " << clients->Data.Name << " "
+				<< clients->Data.Patronymic << " " << clients->Data.Address << " "
+				<< clients->Data.PhoneNum << " " << clients->Data.PayDay << " "
+				<< clients->Data.Summ << endl;
+			if (clients == tail) break;
+			clients = clients->next;
+		}
+		std::cout << "\n\n\tСохранено в файле "<<newName<<"...";
+		char p = _getch();
+		system("cls");
 		break; 
 	}
-	default: {break; }
+	default: {
+		std::cout << "\n\n\tВведено невенрое значение...";
+		char p = _getch(); 
+		break; 
+	}
 	}
 }
-
+//finished
 
 void downloadClients(person*& head, person*& tail, person*& clients){
+	while (true) {
+		if (tail == NULL && head == NULL) break;
+		clients = head;
+		if (clients == tail && clients == head) {
+			tail = NULL;
+			head = NULL;
+			delete clients;
+			clients = NULL;
+			break;
+		}
+		head = clients->next;
+		delete clients;
+	}
+	string defaultFileName = (INDIVID_INPUT_FILE_LOCATION);
+	std::cout << "\n\n\t1. Загрузтиь из файла с названием " << INDIVID_INPUT_FILE_LOCATION
+		<< " с исходным кодом\n\t2. Изменить название файла\n\t0. Выход\n\n\t";
+	int inNum;
+	cin >> inNum;
+	system("cls");
+	switch (inNum) {
+	case(0): {
+		std::cout << "\n\n\tНажмите любую клавишу...";
+		char p = _getch();
+		system("cls");
+		break;
+	}
+	case(1): {
+		ifstream inClients(INDIVID_INPUT_FILE_LOCATION);
+		int size = 0;
+		inClients >> size;
+		clients = new person;
+		head = clients;
+		char l;
+		inClients >> l;
+		getline(inClients, clients->Data.Surname);
+		getline(inClients, clients->Data.Name);
+		getline(inClients, clients->Data.Patronymic);
+		getline(inClients, clients->Data.Address);
+		getline(inClients, clients->Data.PhoneNum);
+		getline(inClients, clients->Data.PayDay);
+		inClients >> clients->Data.Summ;
+		for (int i = 0; i < size; i++) {
+			clients = clients->next = new person;
+			//clinets=clients
+			getline (inClients, clients->Data.Surname);
+			getline (inClients, clients->Data.Name);
+			getline (inClients, clients->Data.Patronymic);
+			getline (inClients, clients->Data.Address);
+			getline (inClients, clients->Data.PhoneNum );
+			getline (inClients, clients->Data.PayDay);
+			inClients>> clients->Data.Summ;
+			//clients = clients->next;
 
+		}
+		std::cout << "\n\n\tЗагруженно...";
+		char p = _getch();
+		system("cls");
+		break;
+	}
+	case(2): {
+		std::cout << "\n\n\tВведите навание выходного файла (без расширения, используя только буквы): ";
+		string newName;
+		cin.get();
+		getline(cin, newName);
+		newName += ".txt";
+		system("cls");
+		ofstream outClients(newName);
+		clients = head;
+		while (true) {
+			outClients << clients->Data.Surname << " " << clients->Data.Name << " "
+				<< clients->Data.Patronymic << " " << clients->Data.Address << " "
+				<< clients->Data.PhoneNum << " " << clients->Data.PayDay << " "
+				<< clients->Data.Summ << endl;
+			if (clients == tail) break;
+			clients = clients->next;
+		}
+		std::cout << "\n\n\tСохранено в файле " << newName << "...";
+		char p = _getch();
+		system("cls");
+		break;
+	}
+	default: {
+		std::cout << "\n\n\tВведено невенрое значение...";
+		char p = _getch();
+		break;
+	}
+	}
 }
 
 
@@ -1065,22 +1217,22 @@ void additionalTask() {
 	root->Data = rand() % 100;*/
 	srand(time(NULL));
 
-	cout << "\n\n\tВведите размер саортируемого массива: ";
+	std::cout << "\n\n\tВведите размер саортируемого массива: ";
 	int size;
 	cin >> size;
 	system("cls");
 	int* arr = new int[size];
-	cout << "\n\n\tБез сортировки: ";
+	std::cout << "\n\n\tБез сортировки: ";
 	for (int i = 0; i < size; i++) {
 		arr[i] = rand() % 100;
-		cout << arr[i] << " ";
+		std::cout << arr[i] << " ";
 	}
 
 	TreeSort(arr, size);
 
-	cout << "\n\n\tОтсортирован: ";
+	std::cout << "\n\n\tОтсортирован: ";
 	for (int i = 0; i < size; i++) {
-		cout << arr[i] << " ";
+		std::cout << arr[i] << " ";
 	}
 
 	std::cout << "\n\n\tНажмите любую клавишу что-бы вернуться в меню... ";
