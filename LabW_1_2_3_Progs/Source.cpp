@@ -1104,7 +1104,6 @@ void downloadClients(person*& head, person*& tail, person*& clients){
 		inClients >> clients->Data.Summ; 
 		for (int i = 0; i < size; i++) {
 			clients = clients->next = new person;
-			//clinets=clients
 			getline (inClients, clients->Data.Surname);
 			getline (inClients, clients->Data.Name);
 			getline (inClients, clients->Data.Patronymic);
