@@ -1088,22 +1088,41 @@ void downloadClients(person*& head, person*& tail, person*& clients){
 		break;
 	}
 	case(1): {
+
 		ifstream inClients(INDIVID_INPUT_FILE_LOCATION);
+
+		if (inClients.bad()) {
+			std::cout << "\n\tОшибка ввода-вывода при чтении...";
+			char p = _getch();
+			system("cls");
+			return;
+		}
+		else if (inClients.eof()) {
+			std::cout << "\n\tДостигнут конец файла...";
+			char p = _getch();
+			system("cls");
+			return;
+		}
+		else if (inClients.fail()) {
+			std::cout << "\n\tНеверный формат данных...";
+			char p = _getch();
+			system("cls");
+			return;
+		}
+
 		int size = 0;
 		inClients >> size;
-		clients = new person;
-		head = clients;
-		char l;
-		inClients >> l;
-		getline(inClients, clients->Data.Surname);
-		getline(inClients, clients->Data.Name);
-		getline(inClients, clients->Data.Patronymic);
-		getline(inClients, clients->Data.Address);
-		getline(inClients, clients->Data.PhoneNum);
-		getline(inClients, clients->Data.PayDay);
-		inClients >> clients->Data.Summ; 
+
 		for (int i = 0; i < size; i++) {
-			clients = clients->next = new person;
+			if (clients == NULL) {
+				clients = new person;
+				head = clients;
+			}
+			else {
+				clients = clients->next = new person;
+				tail = clients;
+			}
+			inClients.get();
 			getline (inClients, clients->Data.Surname);
 			getline (inClients, clients->Data.Name);
 			getline (inClients, clients->Data.Patronymic);
@@ -1111,9 +1130,8 @@ void downloadClients(person*& head, person*& tail, person*& clients){
 			getline (inClients, clients->Data.PhoneNum );
 			getline (inClients, clients->Data.PayDay);
 			inClients>> clients->Data.Summ;
-			//clients = clients->next;
-
 		}
+
 		std::cout << "\n\n\tЗагруженно...";
 		char p = _getch();
 		system("cls");
@@ -1126,17 +1144,53 @@ void downloadClients(person*& head, person*& tail, person*& clients){
 		getline(cin, newName);
 		newName += ".txt";
 		system("cls");
-		ofstream outClients(newName);
-		clients = head;
-		while (true) {
-			outClients << clients->Data.Surname << " " << clients->Data.Name << " "
-				<< clients->Data.Patronymic << " " << clients->Data.Address << " "
-				<< clients->Data.PhoneNum << " " << clients->Data.PayDay << " "
-				<< clients->Data.Summ << endl;
-			if (clients == tail) break;
-			clients = clients->next;
+		ifstream inClients(newName);
+
+		if (inClients.bad()) {
+			std::cout << "\n\tОшибка ввода-вывода при чтении...";
+			char p = _getch();
+			system("cls");
+			return;
 		}
-		std::cout << "\n\n\tСохранено в файле " << newName << "...";
+		else if (inClients.eof()) {
+			std::cout << "\n\tДостигнут конец файла...";
+			char p = _getch();
+			system("cls");
+			return;
+		}
+		else if (inClients.fail()) {
+			std::cout << "\n\tНеверный формат данных...";
+			char p = _getch();
+			system("cls");
+			return;
+		}
+
+		int size = 0;
+		inClients >> size;
+
+		clients = new person;
+		head = clients;
+
+		for (int i = 0; i < size; i++) {
+			if (clients == NULL) {
+				clients = new person;
+				head = clients;
+			}
+			else {
+				clients = clients->next = new person;
+				tail = clients;
+			}
+			inClients.get();
+			getline(inClients, clients->Data.Surname);
+			getline(inClients, clients->Data.Name);
+			getline(inClients, clients->Data.Patronymic);
+			getline(inClients, clients->Data.Address);
+			getline(inClients, clients->Data.PhoneNum);
+			getline(inClients, clients->Data.PayDay);
+			inClients >> clients->Data.Summ;
+		}
+
+		std::cout << "\n\n\tЗагруженно из файле " << newName << "...";
 		char p = _getch();
 		system("cls");
 		break;
