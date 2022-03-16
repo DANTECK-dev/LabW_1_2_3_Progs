@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <Windows.h>
 #include <stdio.h>
 #include <conio.h>
@@ -34,7 +34,7 @@ int main() {
 	srand(time(NULL));
 
 	while (true) {
-		std::cout << "\n\t\tОбщие задания\n\t1. Задание 1\t2. Задание 2\n\n\t3. Индивидуальное задание 7 вариант\n\n\t4. Дополнительное задание\n\n\t0. Выход\n\n\t";
+		std::cout << "\n\t\tРћР±С‰РёРµ Р·Р°РґР°РЅРёСЏ\n\t1. Р—Р°РґР°РЅРёРµ 1\t2. Р—Р°РґР°РЅРёРµ 2\n\n\t3. РРЅРґРёРІРёРґСѓР°Р»СЊРЅРѕРµ Р·Р°РґР°РЅРёРµ 7 РІР°СЂРёР°РЅС‚\n\n\t4. Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕРµ Р·Р°РґР°РЅРёРµ\n\n\t0. Р’С‹С…РѕРґ\n\n\t";
 		int inputNum;
 		cin >> inputNum;
 		std::system("cls");
@@ -44,7 +44,7 @@ int main() {
 		case(2): {secondGeneralTask();	break; }
 		case(3): {individualTask();		break; }
 		case(4): {additionalTask();		break; }
-		default: {std::cout << "\n\tВведено неверное значение, нажмите любую клавишу для продолжения... "; char p = _getch(); std::system("cls"); break; }
+		default: {std::cout << "\n\tР’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ, РЅР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РїСЂРѕРґРѕР»Р¶РµРЅРёСЏ... "; char p = _getch(); std::system("cls"); break; }
 		}
 		std::system("cls");
 	}
@@ -56,11 +56,11 @@ int main() {
 
 #pragma region firstGeneralTask
 
-	/*Считать массив целых чисел из текстового файла (файл может лежать в каталоге
-	программы). Используйте для этого fopen_s() и соответствующие функции.
-	Первое число в файле – количество элементов в массиве. Прочитав его, динамически
-	выделите память под массив и считайте остальные элементы в него.
-	После считывания нужно отсортировать массив и сохранить его в другой файл.*/
+	/*РЎС‡РёС‚Р°С‚СЊ РјР°СЃСЃРёРІ С†РµР»С‹С… С‡РёСЃРµР» РёР· С‚РµРєСЃС‚РѕРІРѕРіРѕ С„Р°Р№Р»Р° (С„Р°Р№Р» РјРѕР¶РµС‚ Р»РµР¶Р°С‚СЊ РІ РєР°С‚Р°Р»РѕРіРµ
+	РїСЂРѕРіСЂР°РјРјС‹). РСЃРїРѕР»СЊР·СѓР№С‚Рµ РґР»СЏ СЌС‚РѕРіРѕ fopen_s() Рё СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёРµ С„СѓРЅРєС†РёРё.
+	РџРµСЂРІРѕРµ С‡РёСЃР»Рѕ РІ С„Р°Р№Р»Рµ вЂ“ РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РІ РјР°СЃСЃРёРІРµ. РџСЂРѕС‡РёС‚Р°РІ РµРіРѕ, РґРёРЅР°РјРёС‡РµСЃРєРё
+	РІС‹РґРµР»РёС‚Рµ РїР°РјСЏС‚СЊ РїРѕРґ РјР°СЃСЃРёРІ Рё СЃС‡РёС‚Р°Р№С‚Рµ РѕСЃС‚Р°Р»СЊРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹ РІ РЅРµРіРѕ.
+	РџРѕСЃР»Рµ СЃС‡РёС‚С‹РІР°РЅРёСЏ РЅСѓР¶РЅРѕ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ РјР°СЃСЃРёРІ Рё СЃРѕС…СЂР°РЅРёС‚СЊ РµРіРѕ РІ РґСЂСѓРіРѕР№ С„Р°Р№Р».*/
 
 #define FIRST_INPUT_FILE_LOCATION		"Input_Massive.txt"
 #define FIRST_OUTPUT_FILE_LOCATION	"Output_Massive.txt"
@@ -75,7 +75,7 @@ void firstGeneralTask() {
 	fopen_s(&file, FIRST_INPUT_FILE_LOCATION, "r");
 	
 	if (file == NULL) {
-		cout << "\n\tОшибка... ";
+		cout << "\n\tРћС€РёР±РєР°... ";
 		char p = _getch();
 	}
 
@@ -83,7 +83,7 @@ void firstGeneralTask() {
 	arr = new int[size];
 
 	if (size == 0) {
-		std::cout << "\n\n\tОшибка, файл не найден или файл пустой... ";
+		std::cout << "\n\n\tРћС€РёР±РєР°, С„Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ РёР»Рё С„Р°Р№Р» РїСѓСЃС‚РѕР№... ";
 		char p = _getch();
 		std::system("cls");
 		return;
@@ -115,14 +115,13 @@ void firstGeneralTask() {
 		fprintf_s(file, "%d\n", arr[i]);
 
 	fclose(file);
-	delete file;
 
 	std::cout << "\n\n\tSorter Mass: ";
 	for (int i = 0; i < size; i++) {
 		std::cout << arr[i] << ", ";
 	}
 
-	std::cout << "\n\n\tНажмите любую клавишу для выхода... "; 
+	std::cout << "\n\n\tРќР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РІС‹С…РѕРґР°... "; 
 	char p = _getch();
 	std::system("cls");
 	return;
@@ -139,20 +138,20 @@ void firstGeneralTask() {
 
 #pragma region secondGeneralTask
 
-	/*Дан файл со списком учебной группы. Для работы с этим файлом используйте потоки
-	<fstream> и соответствующие методы.
-	Первое число в файле – количество студентов. Далее файл разделен на строки, в каждой
-	строке указан номер (идентификатор), фамилия и средний балл студента.
-	Обеспечьте считывание данных о студентах из файла и отображение ее на экран в виде
-	таблицы. Выведите номера и фамилии студентов, у которых средний балл выше 4, в отдельный
-	файл.*/
+	/*Р”Р°РЅ С„Р°Р№Р» СЃРѕ СЃРїРёСЃРєРѕРј СѓС‡РµР±РЅРѕР№ РіСЂСѓРїРїС‹. Р”Р»СЏ СЂР°Р±РѕС‚С‹ СЃ СЌС‚РёРј С„Р°Р№Р»РѕРј РёСЃРїРѕР»СЊР·СѓР№С‚Рµ РїРѕС‚РѕРєРё
+	<fstream> Рё СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёРµ РјРµС‚РѕРґС‹.
+	РџРµСЂРІРѕРµ С‡РёСЃР»Рѕ РІ С„Р°Р№Р»Рµ вЂ“ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СѓРґРµРЅС‚РѕРІ. Р”Р°Р»РµРµ С„Р°Р№Р» СЂР°Р·РґРµР»РµРЅ РЅР° СЃС‚СЂРѕРєРё, РІ РєР°Р¶РґРѕР№
+	СЃС‚СЂРѕРєРµ СѓРєР°Р·Р°РЅ РЅРѕРјРµСЂ (РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ), С„Р°РјРёР»РёСЏ Рё СЃСЂРµРґРЅРёР№ Р±Р°Р»Р» СЃС‚СѓРґРµРЅС‚Р°.
+	РћР±РµСЃРїРµС‡СЊС‚Рµ СЃС‡РёС‚С‹РІР°РЅРёРµ РґР°РЅРЅС‹С… Рѕ СЃС‚СѓРґРµРЅС‚Р°С… РёР· С„Р°Р№Р»Р° Рё РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ РµРµ РЅР° СЌРєСЂР°РЅ РІ РІРёРґРµ
+	С‚Р°Р±Р»РёС†С‹. Р’С‹РІРµРґРёС‚Рµ РЅРѕРјРµСЂР° Рё С„Р°РјРёР»РёРё СЃС‚СѓРґРµРЅС‚РѕРІ, Сѓ РєРѕС‚РѕСЂС‹С… СЃСЂРµРґРЅРёР№ Р±Р°Р»Р» РІС‹С€Рµ 4, РІ РѕС‚РґРµР»СЊРЅС‹Р№
+	С„Р°Р№Р».*/
 
 #define SECOND_INPUT_FILE_LOCATION		"Input_Students.txt"
 #define SECOND_OUTPUT_FILE_LOCATION	"Output_Students.txt"
 
 void secondGeneralTask() {
-	ifstream inputStudent;
-	ofstream outputStudent;
+	fstream inputStudent;
+	fstream outputStudent;
 	int *Num = NULL;
 	string *Name = NULL;
 	string* Surame = NULL;
@@ -162,13 +161,13 @@ void secondGeneralTask() {
 	
 
 	while (true) {
-		inputStudent.open(SECOND_INPUT_FILE_LOCATION);
+		inputStudent.open(SECOND_INPUT_FILE_LOCATION, ios::in);
 	if (!inputStudent.eof()) {
 
 		inputStudent >> size;
 		
 		if (size == 0) {
-			std::cout << "\n\n\tОшибка в исходном файле или путь файла был изменен... ";
+			std::cout << "\n\n\tРћС€РёР±РєР° РІ РёСЃС…РѕРґРЅРѕРј С„Р°Р№Р»Рµ РёР»Рё РїСѓС‚СЊ С„Р°Р№Р»Р° Р±С‹Р» РёР·РјРµРЅРµРЅ... ";
 			char p = _getch();
 			std::system("cls");
 			return;
@@ -189,7 +188,7 @@ void secondGeneralTask() {
 		}
 		inputStudent.close();
 	}
-	std::cout << "\n\t1. Вывод в консоль\n\t2. Выборка по оценкам\n\t0. Выход\n\n\t";
+	std::cout << "\n\t1. Р’С‹РІРѕРґ РІ РєРѕРЅСЃРѕР»СЊ\n\t2. Р’С‹Р±РѕСЂРєР° РїРѕ РѕС†РµРЅРєР°Рј\n\t0. Р’С‹С…РѕРґ\n\n\t";
 		int inNum;
 		cin >> inNum;
 		std::system("cls");
@@ -202,25 +201,25 @@ void secondGeneralTask() {
 							<< " " << Name[i]	<< " " << Patronymic[i] 
 							<< " " << Mark[i]	<< endl;
 				}
-				std::cout << "\n\n\tНажмите любую клавишу для выхода... "; 
+				std::cout << "\n\n\tРќР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РІС‹С…РѕРґР°... "; 
 				char p = _getch(); 
 				std::system("cls"); 
 				break;
 			}
 			case(2): {
-				std::cout << "\n\tВведите оценку: ";
+				std::cout << "\n\tР’РІРµРґРёС‚Рµ РѕС†РµРЅРєСѓ: ";
 				int inMark;
 				cin >> inMark;
 				int counter = 0; 
 				system("cls");
 				if (inMark <= 0 || inMark > 5) {
-					std::cout << "\n\n\tВведено неверное значение... ";
+					std::cout << "\n\n\tР’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ... ";
 					char p = _getch();
 					system("cls");
 					break;
 				}
 				std::cout << endl;
-				outputStudent.open(SECOND_OUTPUT_FILE_LOCATION);
+				outputStudent.open(SECOND_OUTPUT_FILE_LOCATION, ios::out);
 				for (int i = 0; i < size; i++) {
 					if (Mark[i] == inMark) {
 						std::cout			<<"\t" << Num[i]	<< " " << Surame[i]
@@ -236,20 +235,20 @@ void secondGeneralTask() {
 				outputStudent.close();
 
 				if (counter > 0) {
-					std::cout << "\n\tСохранено в файл: " << SECOND_OUTPUT_FILE_LOCATION;
+					std::cout << "\n\tРЎРѕС…СЂР°РЅРµРЅРѕ РІ С„Р°Р№Р»: " << SECOND_OUTPUT_FILE_LOCATION;
 				}
 				if (counter == 0) {
 					system("cls");
-					std::cout << "\n\tНет таких";
+					std::cout << "\n\tРќРµС‚ С‚Р°РєРёС…";
 				}
 				
-				std::cout << "\n\n\tНажмите любую клавишу для выхода... ";
+				std::cout << "\n\n\tРќР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РІС‹С…РѕРґР°... ";
 				char p = _getch();
 				std::system("cls");
 				break;
 			}
 			default: {
-				std::cout << "\n\tВведено неверное значение, нажмите любую клавишу для продолжения... ";
+				std::cout << "\n\tР’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ, РЅР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РїСЂРѕРґРѕР»Р¶РµРЅРёСЏ... ";
 				char p = _getch();
 				std::system("cls");
 				break; 
@@ -257,7 +256,7 @@ void secondGeneralTask() {
 		}
 		
 	}
-	std::cout << "\n\n\tНажмите любую клавишу для выхода... "; char p = _getch(); std::system("cls"); return;
+	std::cout << "\n\n\tРќР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РІС‹С…РѕРґР°... "; char p = _getch(); std::system("cls"); return;
 }
 
 
@@ -287,8 +286,6 @@ struct person {
 	}Data;
 };
 
-//void fillClients		(person*& head, person*& tail, person*& clients);
-
 void addClients			(person*& head, person*& tail, person*& clients);
 void sortClients		(person*& head, person*& tail, person*& clients);
 void transformClients	(person*& head, person*& tail, person*& clients);
@@ -298,33 +295,33 @@ void searchClients		(person*& head, person*& tail, person*& clients);
 void saveClients		(person*& head, person*& tail, person*& clients);
 void downloadClients	(person*& head, person*& tail, person*& clients);
 
-void individualTask() {										//<<<<--------main индивидуального задания
+void individualTask() {										//<<<<--------main РёРЅРґРёРІРёРґСѓР°Р»СЊРЅРѕРіРѕ Р·Р°РґР°РЅРёСЏ
 
-	/*Структура «Покупатель»: Дата покупки; ФИО; домашний адрес; номер телефона; сумма
-	покупки. Вычисляемое значение – общая сумма покупки.*/
+	/*РЎС‚СЂСѓРєС‚СѓСЂР° В«РџРѕРєСѓРїР°С‚РµР»СЊВ»: Р”Р°С‚Р° РїРѕРєСѓРїРєРё; Р¤РРћ; РґРѕРјР°С€РЅРёР№ Р°РґСЂРµСЃ; РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°; СЃСѓРјРјР°
+	РїРѕРєСѓРїРєРё. Р’С‹С‡РёСЃР»СЏРµРјРѕРµ Р·РЅР°С‡РµРЅРёРµ вЂ“ РѕР±С‰Р°СЏ СЃСѓРјРјР° РїРѕРєСѓРїРєРё.*/
 
-	/*1) Создание нового элемента массива структур (ввод его данных);
-	2) Сортировка массива структур;
-	3) Изменение заданной структуры (вводится номер элемента в массиве структур, и его
-	данные изменяются на новые введенные пользователем данные);
-	4) Удаление структуры из массива (можно удаляемому элементу массива присвоить
-	значение последнего элемента и уменьшить количество элементов в массиве структур);
-	5) Вывод на экран массива структур в виде таблицы. Также выводите вычисляемое
-	значение по всему массиву, указанное в вашем варианте.
-	6) Поиск в массиве структур по заданному параметру (самостоятельно выберите поле
-	структуры и реализуйте поиск по нему). То есть это вывод, но только определенных данных.*/
+	/*1) РЎРѕР·РґР°РЅРёРµ РЅРѕРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР° СЃС‚СЂСѓРєС‚СѓСЂ (РІРІРѕРґ РµРіРѕ РґР°РЅРЅС‹С…);
+	2) РЎРѕСЂС‚РёСЂРѕРІРєР° РјР°СЃСЃРёРІР° СЃС‚СЂСѓРєС‚СѓСЂ;
+	3) РР·РјРµРЅРµРЅРёРµ Р·Р°РґР°РЅРЅРѕР№ СЃС‚СЂСѓРєС‚СѓСЂС‹ (РІРІРѕРґРёС‚СЃСЏ РЅРѕРјРµСЂ СЌР»РµРјРµРЅС‚Р° РІ РјР°СЃСЃРёРІРµ СЃС‚СЂСѓРєС‚СѓСЂ, Рё РµРіРѕ
+	РґР°РЅРЅС‹Рµ РёР·РјРµРЅСЏСЋС‚СЃСЏ РЅР° РЅРѕРІС‹Рµ РІРІРµРґРµРЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј РґР°РЅРЅС‹Рµ);
+	4) РЈРґР°Р»РµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ РёР· РјР°СЃСЃРёРІР° (РјРѕР¶РЅРѕ СѓРґР°Р»СЏРµРјРѕРјСѓ СЌР»РµРјРµРЅС‚Сѓ РјР°СЃСЃРёРІР° РїСЂРёСЃРІРѕРёС‚СЊ
+	Р·РЅР°С‡РµРЅРёРµ РїРѕСЃР»РµРґРЅРµРіРѕ СЌР»РµРјРµРЅС‚Р° Рё СѓРјРµРЅСЊС€РёС‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РІ РјР°СЃСЃРёРІРµ СЃС‚СЂСѓРєС‚СѓСЂ);
+	5) Р’С‹РІРѕРґ РЅР° СЌРєСЂР°РЅ РјР°СЃСЃРёРІР° СЃС‚СЂСѓРєС‚СѓСЂ РІ РІРёРґРµ С‚Р°Р±Р»РёС†С‹. РўР°РєР¶Рµ РІС‹РІРѕРґРёС‚Рµ РІС‹С‡РёСЃР»СЏРµРјРѕРµ
+	Р·РЅР°С‡РµРЅРёРµ РїРѕ РІСЃРµРјСѓ РјР°СЃСЃРёРІСѓ, СѓРєР°Р·Р°РЅРЅРѕРµ РІ РІР°С€РµРј РІР°СЂРёР°РЅС‚Рµ.
+	6) РџРѕРёСЃРє РІ РјР°СЃСЃРёРІРµ СЃС‚СЂСѓРєС‚СѓСЂ РїРѕ Р·Р°РґР°РЅРЅРѕРјСѓ РїР°СЂР°РјРµС‚СЂСѓ (СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ РІС‹Р±РµСЂРёС‚Рµ РїРѕР»Рµ
+	СЃС‚СЂСѓРєС‚СѓСЂС‹ Рё СЂРµР°Р»РёР·СѓР№С‚Рµ РїРѕРёСЃРє РїРѕ РЅРµРјСѓ). РўРѕ РµСЃС‚СЊ СЌС‚Рѕ РІС‹РІРѕРґ, РЅРѕ С‚РѕР»СЊРєРѕ РѕРїСЂРµРґРµР»РµРЅРЅС‹С… РґР°РЅРЅС‹С….*/
 
 	/* 3 Laba
-	Измените программу индивидуального задания прошлой лабораторной работы. Добавьте
-	в меню выбора новые действия пользователя «Сохранение» и «Загрузка».
-	Действие «Сохранение» должно выполнять сохранение в файл всех данных вашего
-	списка. При этом пользователю должен предоставляться выбор: сохранить в файл по
-	умолчанию (придумайте название, к примеру, list.data) или пользователь сам вводит название
-	файла, в который нужно сохранить список.
-	Действие «Загрузить» должно выполнять загрузку данных вашего списка (заполнять
-	список) из файла в память программы. При этом пользователю также должен предоставляться
-	выбор: загрузить из файла по умолчанию или пользователь сам вводит название файла, из
-	которого нужно загрузить список*/
+	РР·РјРµРЅРёС‚Рµ РїСЂРѕРіСЂР°РјРјСѓ РёРЅРґРёРІРёРґСѓР°Р»СЊРЅРѕРіРѕ Р·Р°РґР°РЅРёСЏ РїСЂРѕС€Р»РѕР№ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅРѕР№ СЂР°Р±РѕС‚С‹. Р”РѕР±Р°РІСЊС‚Рµ
+	РІ РјРµРЅСЋ РІС‹Р±РѕСЂР° РЅРѕРІС‹Рµ РґРµР№СЃС‚РІРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ В«РЎРѕС…СЂР°РЅРµРЅРёРµВ» Рё В«Р—Р°РіСЂСѓР·РєР°В».
+	Р”РµР№СЃС‚РІРёРµ В«РЎРѕС…СЂР°РЅРµРЅРёРµВ» РґРѕР»Р¶РЅРѕ РІС‹РїРѕР»РЅСЏС‚СЊ СЃРѕС…СЂР°РЅРµРЅРёРµ РІ С„Р°Р№Р» РІСЃРµС… РґР°РЅРЅС‹С… РІР°С€РµРіРѕ
+	СЃРїРёСЃРєР°. РџСЂРё СЌС‚РѕРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ РґРѕР»Р¶РµРЅ РїСЂРµРґРѕСЃС‚Р°РІР»СЏС‚СЊСЃСЏ РІС‹Р±РѕСЂ: СЃРѕС…СЂР°РЅРёС‚СЊ РІ С„Р°Р№Р» РїРѕ
+	СѓРјРѕР»С‡Р°РЅРёСЋ (РїСЂРёРґСѓРјР°Р№С‚Рµ РЅР°Р·РІР°РЅРёРµ, Рє РїСЂРёРјРµСЂСѓ, list.data) РёР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃР°Рј РІРІРѕРґРёС‚ РЅР°Р·РІР°РЅРёРµ
+	С„Р°Р№Р»Р°, РІ РєРѕС‚РѕСЂС‹Р№ РЅСѓР¶РЅРѕ СЃРѕС…СЂР°РЅРёС‚СЊ СЃРїРёСЃРѕРє.
+	Р”РµР№СЃС‚РІРёРµ В«Р—Р°РіСЂСѓР·РёС‚СЊВ» РґРѕР»Р¶РЅРѕ РІС‹РїРѕР»РЅСЏС‚СЊ Р·Р°РіСЂСѓР·РєСѓ РґР°РЅРЅС‹С… РІР°С€РµРіРѕ СЃРїРёСЃРєР° (Р·Р°РїРѕР»РЅСЏС‚СЊ
+	СЃРїРёСЃРѕРє) РёР· С„Р°Р№Р»Р° РІ РїР°РјСЏС‚СЊ РїСЂРѕРіСЂР°РјРјС‹. РџСЂРё СЌС‚РѕРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ С‚Р°РєР¶Рµ РґРѕР»Р¶РµРЅ РїСЂРµРґРѕСЃС‚Р°РІР»СЏС‚СЊСЃСЏ
+	РІС‹Р±РѕСЂ: Р·Р°РіСЂСѓР·РёС‚СЊ РёР· С„Р°Р№Р»Р° РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РёР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃР°Рј РІРІРѕРґРёС‚ РЅР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р°, РёР·
+	РєРѕС‚РѕСЂРѕРіРѕ РЅСѓР¶РЅРѕ Р·Р°РіСЂСѓР·РёС‚СЊ СЃРїРёСЃРѕРє*/
 
 
 	person* head = NULL;
@@ -340,7 +337,7 @@ void individualTask() {										//<<<<--------main индивидуального задания
 
 	//fillClients(head, tail, clients);
 
-	///////	   МЕНЮ    /////////
+	///////	   РњР•РќР®    /////////
 
 	while (true) {
 		std::cout << "\n\t   ___ ___     ______    __  ___     __    __";
@@ -348,22 +345,22 @@ void individualTask() {										//<<<<--------main индивидуального задания
 		std::cout << "\n\t /\\ \\/\\ \\/\\ \\ \\ \\  ___\\ \\ \\  /_ \\ \\ \\ \\ \\/ /\\ \\";
 		std::cout << "\n\t \\ \\_\\ \\_\\ \\ \\ \\ \\_____\\ \\ \\_\\ \\ \\_\\ \\ \\__/\\ \\_\\";
 		std::cout << "\n\t  \\/_/\\/_/\\/_/  \\/_____/  \\/_/  \\/_/  \\/__/ \\/_/\n";
-		std::cout << "\n\t  ----== Введите номер нужного действия ==----  ";
-		std::cout << "\n\t       ----== 1. Добавить  клиента ==----       ";
-		std::cout << "\n\t   ----== 2. Сортировать всех клиентов ==----   ";
-		std::cout << "\n\t    ----== 3. Изменить данные клиента ==----    ";
-		std::cout << "\n\t    ----== 4. Удалить  данные клиента ==----    ";
-		std::cout << "\n\t    ----== 5. Вывести список клиентов ==----    ";
-		std::cout << "\n\t     ----== 6. Поиск клиента по базе ==----     ";
-		std::cout << "\n\t  ----== 7. Сохранить все  данные в файл==----  ";
-		std::cout << "\n\t   ----== 8. Загрузить данные из файла ==----  ";
-		std::cout << "\n\t              ----== 0.  Выход ==----           \n\t";
+		std::cout << "\n\t  ----== Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РЅСѓР¶РЅРѕРіРѕ РґРµР№СЃС‚РІРёСЏ ==----  ";
+		std::cout << "\n\t       ----== 1. Р”РѕР±Р°РІРёС‚СЊ  РєР»РёРµРЅС‚Р° ==----       ";
+		std::cout << "\n\t   ----== 2. РЎРѕСЂС‚РёСЂРѕРІР°С‚СЊ РІСЃРµС… РєР»РёРµРЅС‚РѕРІ ==----   ";
+		std::cout << "\n\t    ----== 3. РР·РјРµРЅРёС‚СЊ РґР°РЅРЅС‹Рµ РєР»РёРµРЅС‚Р° ==----    ";
+		std::cout << "\n\t    ----== 4. РЈРґР°Р»РёС‚СЊ  РґР°РЅРЅС‹Рµ РєР»РёРµРЅС‚Р° ==----    ";
+		std::cout << "\n\t    ----== 5. Р’С‹РІРµСЃС‚Рё СЃРїРёСЃРѕРє РєР»РёРµРЅС‚РѕРІ ==----    ";
+		std::cout << "\n\t     ----== 6. РџРѕРёСЃРє РєР»РёРµРЅС‚Р° РїРѕ Р±Р°Р·Рµ ==----     ";
+		std::cout << "\n\t  ----== 7. РЎРѕС…СЂР°РЅРёС‚СЊ РІСЃРµ  РґР°РЅРЅС‹Рµ РІ С„Р°Р№Р»==----  ";
+		std::cout << "\n\t   ----== 8. Р—Р°РіСЂСѓР·РёС‚СЊ РґР°РЅРЅС‹Рµ РёР· С„Р°Р№Р»Р° ==----  ";
+		std::cout << "\n\t              ----== 0.  Р’С‹С…РѕРґ ==----           \n\t";
 		int inputNum;
 		std::cin >> inputNum;
 		std::system("cls");
 		clients = head;
 		switch (inputNum) {
-		case(0): {std::cout << "\n\thead, Выход\n"; return; }
+		case(0): {std::cout << "\n\thead, Р’С‹С…РѕРґ\n"; return; }
 		case(1): {addClients		(head, tail, clients); break; }
 		case(2): {sortClients		(head, tail, clients); break; }
 		case(3): {transformClients	(head, tail, clients); break; }
@@ -373,7 +370,7 @@ void individualTask() {										//<<<<--------main индивидуального задания
 		case(7): {saveClients		(head, tail, clients); break; }
 		case(8): {downloadClients	(head, tail, clients); break; }
 		default: {
-			std::cout << "\n\tВведено неверное значение, нажмите любую клавишу для продолжения... ";
+			std::cout << "\n\tР’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ, РЅР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РїСЂРѕРґРѕР»Р¶РµРЅРёСЏ... ";
 			char p = _getch();
 			std::system("cls");
 			break;
@@ -395,66 +392,9 @@ void individualTask() {										//<<<<--------main индивидуального задания
 }
 //finished
 
-/*void fillClients(person*& head, person*& tail, person*& clients) {
-	string surnames[10] = { "Wallace",		"Сафонова", "Виноградов",
-			"Зотова",		"Шапошников",	"Brandon",	"Дементьев",
-			"Корнев",		"Пономарев",	"Ефремова" };
-	string names[10] = { "Carter",		"Мария",	"Олег",
-			"Анастасия",	"Макар",		"Rose",		"Арсен",
-			"Лука",			"Кирилл",		"Анна" };
-	string Patronymics[10] = { "None",				"Егоровна",	"Андреевич",
-			"Степановна",		"Михайлович",		"None",		"Миронович",
-			"Сергеевич",		"Константинович",	"Данииловна", };
-	string Address[10] = {
-		"3959 Wyatt Street, West Palm Beach, Florida",
-		"447191, Саратовская область, город Павловский Посад, въезд Гоголя, 92",
-		"737989, Тульская область, город Раменское, бульвар 1905 года, 22",
-		"434586, Ульяновская область, город Пушкино, проезд Ладыгина, 59",
-		"337525, Читинская область, город Чехов, наб. Домодедовская, 97",
-		"3850 Cedarstone Drive, Toledo, Ohio",
-		"107943, Липецкая область, город Зарайск, бульвар Славы, 64",
-		"314032, Калининградская область, город Ногинск, шоссе Космонавтов, 85",
-		"038819, Томская область, город Клин, бульвар Косиора, 27",
-		"139377, Орловская область, город Наро-Фоминск, шоссе Славы, 43", };
-	string PhoneNums[10] = { "+18005553535",	"+78652158365",
-				"+78664788078",	"+78027969659",	"+78895542709",
-				"+18655790207",	"+78032538250",	"+78253336952",
-				"+78412045196",	"+78003477306" };
-	string PayDays[10] = { "29.03.2021",		"27.02.2021",	"03.04.2021",
-			"01.02.2022",	"14.12.2021",		"23.11.2021",	"09.06.2021",
-			"22.05.2021",	"01.02.2021",		"05.12.2021", };
-	int Summs[10] = { 10333,			20419,			9103,
-		23374,			1826,			2873,			7059,
-		5318,			20832,			7256, };
-
-	clients->Data.Surname = surnames[0];
-	clients->Data.Name = names[0];
-	clients->Data.Patronymic = Patronymics[0];
-	clients->Data.Address = Address[0];
-	clients->Data.PhoneNum = PhoneNums[0];
-	clients->Data.PayDay = PayDays[0];
-	clients->Data.Summ = Summs[0];
-	//(*counter)++;
-
-	for (int i = 1; i < 10; i++) {
-		clients->next = new person;
-		clients->next->prev = clients;
-		clients = clients->next;
-		clients->Data.Surname = surnames[i];
-		clients->Data.Name = names[i];
-		clients->Data.Patronymic = Patronymics[i];
-		clients->Data.Address = Address[i];
-		clients->Data.PhoneNum = PhoneNums[i];
-		clients->Data.PayDay = PayDays[i];
-		clients->Data.Summ = Summs[i];
-		//(*counter)++;
-	}
-}*/
-//finished
-
 void addClients(person*& head, person*& tail, person*& clients) {
 	
-	std::cout << "\n\n\tДобавление клиента\n";
+	std::cout << "\n\n\tР”РѕР±Р°РІР»РµРЅРёРµ РєР»РёРµРЅС‚Р°\n";
 	string	newSurname = { "None" };
 	string	newName = { "None" };
 	string	newPatronymic = { "None" };
@@ -463,14 +403,14 @@ void addClients(person*& head, person*& tail, person*& clients) {
 	string	newPayDay = { "None" };
 	int		newSumm = 0;
 
-	std::cout << "\n\tВведите данные клиента\n";
-	std::cout << "\n\tФамилия: "; 	cin.get();		std::getline(cin, newSurname);
-	std::cout << "\n\tИмя: ";						std::getline(cin, newName);
-	std::cout << "\n\tОтчество: ";					std::getline(cin, newPatronymic);
-	std::cout << "\n\tАдресс: ";					std::getline(cin, newAddress);
-	std::cout << "\n\tНомер телефона (без +7): ";	std::getline(cin, newPhoneNum);
-	std::cout << "\n\tДень оплаты (ДД.ММ.ГГГГ): ";	std::getline(cin, newPayDay);
-	std::cout << "\n\tСумму покупки: ";				cin >> newSumm;
+	std::cout << "\n\tР’РІРµРґРёС‚Рµ РґР°РЅРЅС‹Рµ РєР»РёРµРЅС‚Р°\n";
+	std::cout << "\n\tР¤Р°РјРёР»РёСЏ: "; 	cin.get();		std::getline(cin, newSurname);
+	std::cout << "\n\tРРјСЏ: ";						std::getline(cin, newName);
+	std::cout << "\n\tРћС‚С‡РµСЃС‚РІРѕ: ";					std::getline(cin, newPatronymic);
+	std::cout << "\n\tРђРґСЂРµСЃСЃ: ";					std::getline(cin, newAddress);
+	std::cout << "\n\tРќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° (Р±РµР· +7): ";	std::getline(cin, newPhoneNum);
+	std::cout << "\n\tР”РµРЅСЊ РѕРїР»Р°С‚С‹ (Р”Р”.РњРњ.Р“Р“Р“Р“): ";	std::getline(cin, newPayDay);
+	std::cout << "\n\tРЎСѓРјРјСѓ РїРѕРєСѓРїРєРё: ";				cin >> newSumm;
 	std::system("cls");
 
 	if (tail == NULL && head == NULL) {
@@ -485,12 +425,12 @@ void addClients(person*& head, person*& tail, person*& clients) {
 			clients->Data.PayDay = newPayDay;
 			clients->Data.Summ = newSumm;
 
-			std::cout << "\n\tДобавлен \n" << "\n\tфамилия: " << newSurname
-				<< "\n\tИмя: " << newName << "\n\tОтчество: " << newPatronymic
-				<< "\n\tАдресс: " << newAddress << "\n\tНомер телефона: +7" << newPhoneNum
-				<< "\n\tДень оплаты: " << newPayDay << "\n\tСумму покупки: " << newSumm;
+			std::cout << "\n\tР”РѕР±Р°РІР»РµРЅ \n" << "\n\tС„Р°РјРёР»РёСЏ: " << newSurname
+				<< "\n\tРРјСЏ: " << newName << "\n\tРћС‚С‡РµСЃС‚РІРѕ: " << newPatronymic
+				<< "\n\tРђРґСЂРµСЃСЃ: " << newAddress << "\n\tРќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°: +7" << newPhoneNum
+				<< "\n\tР”РµРЅСЊ РѕРїР»Р°С‚С‹: " << newPayDay << "\n\tРЎСѓРјРјСѓ РїРѕРєСѓРїРєРё: " << newSumm;
 
-			std::cout << "\n\n\tНажмите любую клавишу для возврата в меню... ";
+			std::cout << "\n\n\tРќР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ... ";
 			char p = _getch();
 			std::system("cls");
 			return;
@@ -509,12 +449,12 @@ void addClients(person*& head, person*& tail, person*& clients) {
 
 	//(*counter)++;
 
-	std::cout << "\n\tДобавлен \n" << "\n\tфамилия: " << newSurname
-		<< "\n\tИмя: " << newName << "\n\tОтчество: " << newPatronymic
-		<< "\n\tАдресс: " << newAddress << "\n\tНомер телефона: +7" << newPhoneNum
-		<< "\n\tДень оплаты: " << newPayDay << "\n\tСумму покупки: " << newSumm;
+	std::cout << "\n\tР”РѕР±Р°РІР»РµРЅ \n" << "\n\tС„Р°РјРёР»РёСЏ: " << newSurname
+		<< "\n\tРРјСЏ: " << newName << "\n\tРћС‚С‡РµСЃС‚РІРѕ: " << newPatronymic
+		<< "\n\tРђРґСЂРµСЃСЃ: " << newAddress << "\n\tРќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°: +7" << newPhoneNum
+		<< "\n\tР”РµРЅСЊ РѕРїР»Р°С‚С‹: " << newPayDay << "\n\tРЎСѓРјРјСѓ РїРѕРєСѓРїРєРё: " << newSumm;
 
-	std::cout << "\n\n\tНажмите любую клавишу для возврата в меню... ";
+	std::cout << "\n\n\tРќР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ... ";
 	char p = _getch();
 	std::system("cls");
 };
@@ -522,19 +462,19 @@ void addClients(person*& head, person*& tail, person*& clients) {
 
 void sortClients(person*& head, person*& tail, person*& clients) {
 	if (tail == NULL && head == NULL) {
-		std::cout << "\n\n\tНет данных клиентов для сортировки...";
+		std::cout << "\n\n\tРќРµС‚ РґР°РЅРЅС‹С… РєР»РёРµРЅС‚РѕРІ РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё...";
 		char p = _getch();
 		system("cls");
 		return;
 	}
 	if (clients == head && clients == tail) {
-		std::cout << "\n\n\tМало данных клиентов для сортировки...";
+		std::cout << "\n\n\tРњР°Р»Рѕ РґР°РЅРЅС‹С… РєР»РёРµРЅС‚РѕРІ РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё...";
 		char p = _getch();
 		system("cls");
 		return;
 	}
-	std::cout << "\n\tСортировать всех клиентов по\n";
-	std::cout << "\n\t1. Фамилии\t2. Имя\t0.Выход\n\n\t";
+	std::cout << "\n\tРЎРѕСЂС‚РёСЂРѕРІР°С‚СЊ РІСЃРµС… РєР»РёРµРЅС‚РѕРІ РїРѕ\n";
+	std::cout << "\n\t1. Р¤Р°РјРёР»РёРё\t2. РРјСЏ\t0.Р’С‹С…РѕРґ\n\n\t";
 	int inputNum;
 	cin >> inputNum;
 	clients = head;
@@ -549,7 +489,7 @@ void sortClients(person*& head, person*& tail, person*& clients) {
 	clients = head;
 	std::system("cls");
 	switch (inputNum) {
-	case(0): {std::cout << "\n\n\tВыход"; std::system("cls"); return; }
+	case(0): {std::cout << "\n\n\tР’С‹С…РѕРґ"; std::system("cls"); return; }
 	case(1): {
 		for (int i = 1; i < counter; i++) {
 			clients = head;
@@ -562,7 +502,7 @@ void sortClients(person*& head, person*& tail, person*& clients) {
 				clients = clients->next;
 			}
 		}
-		std::cout << "\n\n\tСортировка по фамилии завершена, нажмите любую кдавишу для возврата в меню... ";
+		std::cout << "\n\n\tРЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ С„Р°РјРёР»РёРё Р·Р°РІРµСЂС€РµРЅР°, РЅР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєРґР°РІРёС€Сѓ РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ... ";
 		char p = _getch();
 		std::system("cls");
 		return;
@@ -579,13 +519,13 @@ void sortClients(person*& head, person*& tail, person*& clients) {
 				clients = clients->next;
 			}
 		}
-		std::cout << "\n\n\tСортировка по имени завершена, нажмите любую кдавишу для возврата в меню... ";
+		std::cout << "\n\n\tРЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РёРјРµРЅРё Р·Р°РІРµСЂС€РµРЅР°, РЅР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєРґР°РІРёС€Сѓ РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ... ";
 		char p = _getch();
 		std::system("cls");
 		return;
 	}
 	default: {
-		std::cout << "\n\n\tВведено неверное значение, нажмите любую клавишу для возврата в меню... ";
+		std::cout << "\n\n\tР’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ, РЅР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ... ";
 		char p = _getch();
 		std::system("cls");
 		break; }
@@ -595,28 +535,28 @@ void sortClients(person*& head, person*& tail, person*& clients) {
 //finished
 
 void transform(person*& head, person*& tail, person*& clients) {
-	std::cout << "\n\n\tКакие данные изменить\n"
-		<< "\n\t1. Фамилию - " << clients->Data.Surname
-		<< "\n\t2. Имя - " << clients->Data.Name
-		<< "\n\t3. Отчество - " << clients->Data.Patronymic
-		<< "\n\t4. Адресс - " << clients->Data.Address
-		<< "\n\t5. Телефонный номер - " << clients->Data.PhoneNum
-		<< "\n\t6. День оплаты - " << clients->Data.PayDay
-		<< "\n\t7. Сумму - " << clients->Data.Summ
-		<< "\n\t0. Выход\n\n\t";
+	std::cout << "\n\n\tРљР°РєРёРµ РґР°РЅРЅС‹Рµ РёР·РјРµРЅРёС‚СЊ\n"
+		<< "\n\t1. Р¤Р°РјРёР»РёСЋ - " << clients->Data.Surname
+		<< "\n\t2. РРјСЏ - " << clients->Data.Name
+		<< "\n\t3. РћС‚С‡РµСЃС‚РІРѕ - " << clients->Data.Patronymic
+		<< "\n\t4. РђРґСЂРµСЃСЃ - " << clients->Data.Address
+		<< "\n\t5. РўРµР»РµС„РѕРЅРЅС‹Р№ РЅРѕРјРµСЂ - " << clients->Data.PhoneNum
+		<< "\n\t6. Р”РµРЅСЊ РѕРїР»Р°С‚С‹ - " << clients->Data.PayDay
+		<< "\n\t7. РЎСѓРјРјСѓ - " << clients->Data.Summ
+		<< "\n\t0. Р’С‹С…РѕРґ\n\n\t";
 	int InInt;
 	cin >> InInt;
 	switch (InInt) {
 	case(0): {break; }
-	case(1): {std::cout << "\n\n\tВведите Фамилию: ";		cin.get(); getline(cin, clients->Data.Surname); 	break; }
-	case(2): {std::cout << "\n\n\tВведите Имя: ";			cin.get(); getline(cin, clients->Data.Name); 		break; }
-	case(3): {std::cout << "\n\n\tВведите Отчество: ";		cin.get(); getline(cin, clients->Data.Patronymic);	break; }
-	case(4): {std::cout << "\n\n\tВведите Адресс: ";		cin.get(); getline(cin, clients->Data.Address); 	break; }
-	case(5): {std::cout << "\n\n\tВведите Телефонный: ";	cin.get(); getline(cin, clients->Data.PhoneNum); 	break; }
-	case(6): {std::cout << "\n\n\tВведите День: ";			cin.get(); getline(cin, clients->Data.PayDay);		break; }
-	case(7): {std::cout << "\n\n\tВведите Сумму: ";			cin.get();		   cin >> clients->Data.Summ;		break; }
+	case(1): {std::cout << "\n\n\tР’РІРµРґРёС‚Рµ Р¤Р°РјРёР»РёСЋ: ";		cin.get(); getline(cin, clients->Data.Surname); 	break; }
+	case(2): {std::cout << "\n\n\tР’РІРµРґРёС‚Рµ РРјСЏ: ";			cin.get(); getline(cin, clients->Data.Name); 		break; }
+	case(3): {std::cout << "\n\n\tР’РІРµРґРёС‚Рµ РћС‚С‡РµСЃС‚РІРѕ: ";		cin.get(); getline(cin, clients->Data.Patronymic);	break; }
+	case(4): {std::cout << "\n\n\tР’РІРµРґРёС‚Рµ РђРґСЂРµСЃСЃ: ";		cin.get(); getline(cin, clients->Data.Address); 	break; }
+	case(5): {std::cout << "\n\n\tР’РІРµРґРёС‚Рµ РўРµР»РµС„РѕРЅРЅС‹Р№: ";	cin.get(); getline(cin, clients->Data.PhoneNum); 	break; }
+	case(6): {std::cout << "\n\n\tР’РІРµРґРёС‚Рµ Р”РµРЅСЊ: ";			cin.get(); getline(cin, clients->Data.PayDay);		break; }
+	case(7): {std::cout << "\n\n\tР’РІРµРґРёС‚Рµ РЎСѓРјРјСѓ: ";			cin.get();		   cin >> clients->Data.Summ;		break; }
 	default: {
-		std::cout << "\n\n\tВведено неверное значение, нажмите любую клавишу для возврата в меню... ";
+		std::cout << "\n\n\tР’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ, РЅР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ... ";
 		char p = _getch();
 		std::system("cls");
 		break; }
@@ -625,20 +565,20 @@ void transform(person*& head, person*& tail, person*& clients) {
 }
 void transformClients(person*& head, person*& tail, person*& clients) {
 	if (tail == NULL && head == NULL) {
-		std::cout << "\n\n\tНет данных клиентов для изменения...";
+		std::cout << "\n\n\tРќРµС‚ РґР°РЅРЅС‹С… РєР»РёРµРЅС‚РѕРІ РґР»СЏ РёР·РјРµРЅРµРЅРёСЏ...";
 		char p = _getch();
 		system("cls");
 		return;
 	}
-	std::cout << "\n\n\tИзменить данные клиента\n\n\t\tПоиск по \n\n\t1. ФИО\t2. Счёту в базе\t0. Выход\n\n\t";
+	std::cout << "\n\n\tРР·РјРµРЅРёС‚СЊ РґР°РЅРЅС‹Рµ РєР»РёРµРЅС‚Р°\n\n\t\tРџРѕРёСЃРє РїРѕ \n\n\t1. Р¤РРћ\t2. РЎС‡С‘С‚Сѓ РІ Р±Р°Р·Рµ\t0. Р’С‹С…РѕРґ\n\n\t";
 	int inputNum;
 	cin >> inputNum;
 	std::system("cls");
 	clients = head;
 	switch (inputNum) {
-	case(0): {std::cout << "\n\n\tВыход"; std::system("cls"); return; }
+	case(0): {std::cout << "\n\n\tР’С‹С…РѕРґ"; std::system("cls"); return; }
 	case(1): {
-		std::cout << "\n\n\tВведите Фамилию или Имя или Отчество. 0. Выход\n\n\t";
+		std::cout << "\n\n\tР’РІРµРґРёС‚Рµ Р¤Р°РјРёР»РёСЋ РёР»Рё РРјСЏ РёР»Рё РћС‚С‡РµСЃС‚РІРѕ. 0. Р’С‹С…РѕРґ\n\n\t";
 		string inputStr;
 		cin >> inputStr;
 		std::system("cls");
@@ -655,13 +595,13 @@ void transformClients(person*& head, person*& tail, person*& clients) {
 			id++;
 		}
 		if (couErr > 1) {
-			std::cout << "\n\n\tНайдено более одного клиента, введите дргуие даннные клиента. Нажмите любую клавишу для возврата в меню... ";
+			std::cout << "\n\n\tРќР°Р№РґРµРЅРѕ Р±РѕР»РµРµ РѕРґРЅРѕРіРѕ РєР»РёРµРЅС‚Р°, РІРІРµРґРёС‚Рµ РґСЂРіСѓРёРµ РґР°РЅРЅРЅС‹Рµ РєР»РёРµРЅС‚Р°. РќР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ... ";
 			char p = _getch();
 			std::system("cls");
 			return;
 		}
 		if (searchID == -1) {
-			std::cout << "\n\n\tКлиент не найден, нажмите любую клавишу что-бы вернуться в меню... ";
+			std::cout << "\n\n\tРљР»РёРµРЅС‚ РЅРµ РЅР°Р№РґРµРЅ, РЅР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ С‡С‚Рѕ-Р±С‹ РІРµСЂРЅСѓС‚СЊСЃСЏ РІ РјРµРЅСЋ... ";
 			char p = _getch();
 			std::system("cls");
 			return;
@@ -671,8 +611,8 @@ void transformClients(person*& head, person*& tail, person*& clients) {
 			for (int i = 0; i < searchID - 1; i++) {
 				clients = clients->next;
 			}
-			std::cout << "\n\n\tИзменить данные клиента " << clients->Data.Surname << " " << clients->Data.Name
-				<< " " << clients->Data.Patronymic << "\n\n\t1. Да\t2. Нет\n\n\t";
+			std::cout << "\n\n\tРР·РјРµРЅРёС‚СЊ РґР°РЅРЅС‹Рµ РєР»РёРµРЅС‚Р° " << clients->Data.Surname << " " << clients->Data.Name
+				<< " " << clients->Data.Patronymic << "\n\n\t1. Р”Р°\t2. РќРµС‚\n\n\t";
 			int inputH;
 			cin >> inputH;
 			std::system("cls");
@@ -680,7 +620,7 @@ void transformClients(person*& head, person*& tail, person*& clients) {
 			case(1): {transform(head, tail, clients); return; }
 			case(2): { return; }
 			default: {
-				std::cout << "\n\n\tВведено неверное значение, нажмите любую клавишу для возврата в меню... ";
+				std::cout << "\n\n\tР’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ, РЅР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ... ";
 				char p = _getch();
 				std::system("cls");
 				return; }
@@ -688,7 +628,7 @@ void transformClients(person*& head, person*& tail, person*& clients) {
 		}
 	}
 	case(2): {
-		std::cout << "\n\n\tВведите номер в базе. 0. Выход\n\n\t";
+		std::cout << "\n\n\tР’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РІ Р±Р°Р·Рµ. 0. Р’С‹С…РѕРґ\n\n\t";
 		int inputInt;
 		cin >> inputInt;
 		if (inputInt == 0) { std::system("cls"); return; }
@@ -696,8 +636,8 @@ void transformClients(person*& head, person*& tail, person*& clients) {
 			clients = clients->next;
 		}
 		std::system("cls");
-		std::cout << "\n\n\tИзменить данные клиента " << clients->Data.Surname << " " << clients->Data.Name
-			<< " " << clients->Data.Patronymic << "\n\n\t1. Да\t2. Нет\n\n\t";
+		std::cout << "\n\n\tРР·РјРµРЅРёС‚СЊ РґР°РЅРЅС‹Рµ РєР»РёРµРЅС‚Р° " << clients->Data.Surname << " " << clients->Data.Name
+			<< " " << clients->Data.Patronymic << "\n\n\t1. Р”Р°\t2. РќРµС‚\n\n\t";
 		int inP;
 		cin >> inP;
 		std::system("cls");
@@ -705,14 +645,14 @@ void transformClients(person*& head, person*& tail, person*& clients) {
 		case(1): {transform(head, tail, clients); return; }
 		case(2): { return; }
 		default: {
-			std::cout << "\n\n\tВведено неверное значение, нажмите любую клавишу для возврата в меню... ";
+			std::cout << "\n\n\tР’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ, РЅР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ... ";
 			char p = _getch();
 			std::system("cls");
 			return; }
 		}
 	}
 	default: {
-		std::cout << "\n\n\tВведено неверное значение, нажмите любую клавишу для возврата в меню... ";
+		std::cout << "\n\n\tР’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ, РЅР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ... ";
 		char p = _getch();
 		std::system("cls");
 		return; }
@@ -743,7 +683,7 @@ void swapAndDelClients(person*& head, person*& tail, person*& clients) {
 }
 void delClients(person*& head, person*& tail, person*& clients) {
 	if (tail == NULL && head == NULL) {
-		std::cout << "\n\n\tНет данных клиентов для удаления...";
+		std::cout << "\n\n\tРќРµС‚ РґР°РЅРЅС‹С… РєР»РёРµРЅС‚РѕРІ РґР»СЏ СѓРґР°Р»РµРЅРёСЏ...";
 		char p = _getch();
 		system("cls");
 		return;
@@ -759,15 +699,15 @@ void delClients(person*& head, person*& tail, person*& clients) {
 		clients = clients->prev;
 		head = clients;
 	}
-	std::cout << "\n\tУдалить данные клиента\n\n\t\tПоиск по \n\n\t1. ФИО\t2. Счёту в базе\t0. Выход\n\n\t";
+	std::cout << "\n\tРЈРґР°Р»РёС‚СЊ РґР°РЅРЅС‹Рµ РєР»РёРµРЅС‚Р°\n\n\t\tРџРѕРёСЃРє РїРѕ \n\n\t1. Р¤РРћ\t2. РЎС‡С‘С‚Сѓ РІ Р±Р°Р·Рµ\t0. Р’С‹С…РѕРґ\n\n\t";
 	int inputNum;
 	cin >> inputNum;
 	std::system("cls");
 	clients = head;
 	switch (inputNum) {
-	case(0): {std::cout << "\n\n\tВыход"; std::system("cls"); return; }
+	case(0): {std::cout << "\n\n\tР’С‹С…РѕРґ"; std::system("cls"); return; }
 	case(1): {
-		std::cout << "\n\n\tВведите Фамилию или Имя или Отчество. 0. Выход\n\n\t";
+		std::cout << "\n\n\tР’РІРµРґРёС‚Рµ Р¤Р°РјРёР»РёСЋ РёР»Рё РРјСЏ РёР»Рё РћС‚С‡РµСЃС‚РІРѕ. 0. Р’С‹С…РѕРґ\n\n\t";
 		string inputStr;
 		cin >> inputStr;
 		std::system("cls");
@@ -784,34 +724,34 @@ void delClients(person*& head, person*& tail, person*& clients) {
 			id++;
 		}
 		if (couErr > 1) {
-			std::cout << "\n\n\tНайдено более одного клиента, введите дргуие даннные клиента. Нажмите любую клавишу для возврата в меню... ";
+			std::cout << "\n\n\tРќР°Р№РґРµРЅРѕ Р±РѕР»РµРµ РѕРґРЅРѕРіРѕ РєР»РёРµРЅС‚Р°, РІРІРµРґРёС‚Рµ РґСЂРіСѓРёРµ РґР°РЅРЅРЅС‹Рµ РєР»РёРµРЅС‚Р°. РќР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ... ";
 			char p = _getch();
 			std::system("cls");
 			return;
 		}
 		if (searchID == -1) {
-			std::cout << "\n\n\tКлиент не найден, нажмите любую клавишу что-бы вернуться в меню... ";
+			std::cout << "\n\n\tРљР»РёРµРЅС‚ РЅРµ РЅР°Р№РґРµРЅ, РЅР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ С‡С‚Рѕ-Р±С‹ РІРµСЂРЅСѓС‚СЊСЃСЏ РІ РјРµРЅСЋ... ";
 			char p = _getch();
 			std::system("cls");
 			return;
 		}
 		if (searchID >= 0) {
-			std::cout << "\n\n\tУдалить данные клиента " << clients->Data.Surname << " " << clients->Data.Name
-				<< " " << clients->Data.Patronymic << "\n\n\t1. Да\t2. Нет\n\n\t";
+			std::cout << "\n\n\tРЈРґР°Р»РёС‚СЊ РґР°РЅРЅС‹Рµ РєР»РёРµРЅС‚Р° " << clients->Data.Surname << " " << clients->Data.Name
+				<< " " << clients->Data.Patronymic << "\n\n\t1. Р”Р°\t2. РќРµС‚\n\n\t";
 			int inputH;
 			cin >> inputH;
 			std::system("cls");
 			switch (inputH) {
 			case(1): {
 				swapAndDelClients(head, tail, clients);
-				std::cout << "\n\n\tУспешно удалено, нажмите любую клавишу для выхода в меню... ";
+				std::cout << "\n\n\tРЈСЃРїРµС€РЅРѕ СѓРґР°Р»РµРЅРѕ, РЅР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РІС‹С…РѕРґР° РІ РјРµРЅСЋ... ";
 				char p = _getch();
 				std::system("cls");
 				return;
 			}
 			case(2): { return; }
 			default: {
-				std::cout << "\n\n\tВведено неверное значение, нажмите любую клавишу для возврата в меню... ";
+				std::cout << "\n\n\tР’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ, РЅР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ... ";
 				char p = _getch();
 				std::system("cls");
 				return;
@@ -820,7 +760,7 @@ void delClients(person*& head, person*& tail, person*& clients) {
 		}
 	}
 	case(2): {
-		std::cout << "\n\n\tВведите номер в базе. 0. Выход\n\n\t";
+		std::cout << "\n\n\tР’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РІ Р±Р°Р·Рµ. 0. Р’С‹С…РѕРґ\n\n\t";
 		int inputInt;
 		cin >> inputInt;
 		if (inputInt == 0)return;
@@ -829,22 +769,22 @@ void delClients(person*& head, person*& tail, person*& clients) {
 			clients = clients->next;
 		}
 		std::system("cls");
-		std::cout << "\n\n\tУдалить данные клиента " << clients->Data.Surname << " " << clients->Data.Name
-			<< " " << clients->Data.Patronymic << "\n\n\t1. Да\t2. Нет\n\n\t";
+		std::cout << "\n\n\tРЈРґР°Р»РёС‚СЊ РґР°РЅРЅС‹Рµ РєР»РёРµРЅС‚Р° " << clients->Data.Surname << " " << clients->Data.Name
+			<< " " << clients->Data.Patronymic << "\n\n\t1. Р”Р°\t2. РќРµС‚\n\n\t";
 		int inP;
 		cin >> inP;
 		std::system("cls");
 		switch (inP) {
 		case(1): {
 			swapAndDelClients(head, tail, clients);
-			std::cout << "\n\n\tУспешно удалено, нажмите любую клавишу для выхода в меню... ";
+			std::cout << "\n\n\tРЈСЃРїРµС€РЅРѕ СѓРґР°Р»РµРЅРѕ, РЅР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РІС‹С…РѕРґР° РІ РјРµРЅСЋ... ";
 			char p = _getch();
 			std::system("cls");
 			return;
 		}
 		case(2): { return; }
 		default: {
-			std::cout << "\n\n\tВведено неверное значение, нажмите любую клавишу для возврата в меню... ";
+			std::cout << "\n\n\tР’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ, РЅР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ... ";
 			char p = _getch();
 			std::system("cls");
 			return;
@@ -852,7 +792,7 @@ void delClients(person*& head, person*& tail, person*& clients) {
 		}
 	}
 	default: {
-		std::cout << "\n\n\tВведено неверное значение, нажмите любую клавишу для возврата в меню... ";
+		std::cout << "\n\n\tР’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ, РЅР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ... ";
 		char p = _getch();
 		std::system("cls");
 		return;
@@ -871,16 +811,16 @@ void delClients(person*& head, person*& tail, person*& clients) {
 	}*/
 	std::system("cls");
 }
-
+//finished
 
 void showClients(person*& head, person*& tail, person*& clients) {
 	if (tail == NULL && head == NULL) {
-		std::cout << "\n\n\tНет данных клиентов для вывода...";
+		std::cout << "\n\n\tРќРµС‚ РґР°РЅРЅС‹С… РєР»РёРµРЅС‚РѕРІ РґР»СЏ РІС‹РІРѕРґР°...";
 		char p = _getch();
 		system("cls");
 		return;
 	}
-	std::cout << "\n\n\tВывести список клиентов\n\n";
+	std::cout << "\n\n\tР’С‹РІРµСЃС‚Рё СЃРїРёСЃРѕРє РєР»РёРµРЅС‚РѕРІ\n\n";
 
 	int maxLenSurname = 7;
 	int maxLenName = 3;
@@ -927,13 +867,13 @@ void showClients(person*& head, person*& tail, person*& clients) {
 	std::cout << endl;
 
 	printf_s("\t| %*s | %*s | %*s | %*s | %*s | %*s | %*s |",
-		maxLenSurname, "Фамилия",
-		maxLenName, "Имя",
-		maxLenPatronymic, "Отчество",
-		maxLenAddress, "Домашний адресс",
-		maxLenPhoneNum, "Телефонный номер",
-		maxLenPayDay, "День оплаты",
-		maxLenSumm, "Сумма покупки");
+		maxLenSurname, "Р¤Р°РјРёР»РёСЏ",
+		maxLenName, "РРјСЏ",
+		maxLenPatronymic, "РћС‚С‡РµСЃС‚РІРѕ",
+		maxLenAddress, "Р”РѕРјР°С€РЅРёР№ Р°РґСЂРµСЃСЃ",
+		maxLenPhoneNum, "РўРµР»РµС„РѕРЅРЅС‹Р№ РЅРѕРјРµСЂ",
+		maxLenPayDay, "Р”РµРЅСЊ РѕРїР»Р°С‚С‹",
+		maxLenSumm, "РЎСѓРјРјР° РїРѕРєСѓРїРєРё");
 	std::cout << "\n\t";
 
 	for (int i = 0; i < maxLength; i++) { std::cout << "-"; }
@@ -966,24 +906,24 @@ void showClients(person*& head, person*& tail, person*& clients) {
 	for (int i = 0; i < maxLenPayDay + 6; i++) { std::cout << "-"; }
 
 
-	std::cout << "\n\tНажмите любую клавишу для возврата в меню... "; char p = _getch(); std::system("cls");
+	std::cout << "\n\tРќР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РјРµРЅСЋ... "; char p = _getch(); std::system("cls");
 	std::system("cls");
 }
 //finished
 
 void show(person*& clients) {
-	std::cout << "\n\n\tФИО: " << clients->Data.Surname << " " << clients->Data.Name << " " << clients->Data.Patronymic << " Адресс: "
-		<< clients->Data.Address << "\n\tТелефоный номер: " << clients->Data.PhoneNum << " День оплаты: " << clients->Data.PayDay << " Сумма: " << clients->Data.Summ;
+	std::cout << "\n\n\tР¤РРћ: " << clients->Data.Surname << " " << clients->Data.Name << " " << clients->Data.Patronymic << " РђРґСЂРµСЃСЃ: "
+		<< clients->Data.Address << "\n\tРўРµР»РµС„РѕРЅС‹Р№ РЅРѕРјРµСЂ: " << clients->Data.PhoneNum << " Р”РµРЅСЊ РѕРїР»Р°С‚С‹: " << clients->Data.PayDay << " РЎСѓРјРјР°: " << clients->Data.Summ;
 }
 void searchClients(person*& head, person*& tail, person*& clients) {
 	if (tail == NULL && head == NULL) {
-		std::cout << "\n\n\tНет данных клиентов для поиска...";
+		std::cout << "\n\n\tРќРµС‚ РґР°РЅРЅС‹С… РєР»РёРµРЅС‚РѕРІ РґР»СЏ РїРѕРёСЃРєР°...";
 		char p = _getch();
 		system("cls");
 		return;
 	}
-	std::cout << "\n\tПоиск клиента по базе";
-	std::cout << "\n\n\tВведите Фамилию или Имя или Отчество\t0. Выход\n\n\t";
+	std::cout << "\n\tРџРѕРёСЃРє РєР»РёРµРЅС‚Р° РїРѕ Р±Р°Р·Рµ";
+	std::cout << "\n\n\tР’РІРµРґРёС‚Рµ Р¤Р°РјРёР»РёСЋ РёР»Рё РРјСЏ РёР»Рё РћС‚С‡РµСЃС‚РІРѕ\t0. Р’С‹С…РѕРґ\n\n\t";
 	string inputStr;
 	cin >> inputStr;
 	std::system("cls");
@@ -998,8 +938,8 @@ void searchClients(person*& head, person*& tail, person*& clients) {
 		clients = clients->next;
 	}
 	clients = head;
-	if (searchID == true) { std::cout << "\n\n\tНажмите любую клавишу что-бы вернуться в меню... "; char p = _getch(); std::system("cls");  return; }
-	if (searchID == false) { std::cout << "\n\n\tКлиент не найден, нажмите любую клавишу что-бы вернуться в меню... "; char p = _getch(); std::system("cls"); return; }
+	if (searchID == true) { std::cout << "\n\n\tРќР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ С‡С‚Рѕ-Р±С‹ РІРµСЂРЅСѓС‚СЊСЃСЏ РІ РјРµРЅСЋ... "; char p = _getch(); std::system("cls");  return; }
+	if (searchID == false) { std::cout << "\n\n\tРљР»РёРµРЅС‚ РЅРµ РЅР°Р№РґРµРЅ, РЅР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ С‡С‚Рѕ-Р±С‹ РІРµСЂРЅСѓС‚СЊСЃСЏ РІ РјРµРЅСЋ... "; char p = _getch(); std::system("cls"); return; }
 	std::system("cls");
 }
 //finished
@@ -1007,20 +947,20 @@ void searchClients(person*& head, person*& tail, person*& clients) {
 void saveClients(person*& head, person*& tail, person*& clients)
 {
 	if (tail == NULL && head == NULL) {
-		std::cout << "\n\n\tНет данных клиентов для сохранения...";
+		std::cout << "\n\n\tРќРµС‚ РґР°РЅРЅС‹С… РєР»РёРµРЅС‚РѕРІ РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ...";
 		char p = _getch();
 		system("cls");
 		return;
 	}
 	string defaultFileName = (INDIVID_OUTPUT_FILE_LOCATION);
-	std::cout << "\n\n\t1. Сохранить в файле с названием " << INDIVID_OUTPUT_FILE_LOCATION
-		<< " с исходным кодом\n\t2. Изменить название файла\n\t0. Выход\n\n\t";
+	std::cout << "\n\n\t1. РЎРѕС…СЂР°РЅРёС‚СЊ РІ С„Р°Р№Р»Рµ СЃ РЅР°Р·РІР°РЅРёРµРј " << INDIVID_OUTPUT_FILE_LOCATION
+		<< " СЃ РёСЃС…РѕРґРЅС‹Рј РєРѕРґРѕРј\n\t2. РР·РјРµРЅРёС‚СЊ РЅР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р°\n\t0. Р’С‹С…РѕРґ\n\n\t";
 	int inNum;
 	cin >> inNum;
 	system("cls");
 	switch (inNum) {
 	case(0): {
-		std::cout << "\n\n\tНажмите любую клавишу...";
+		std::cout << "\n\n\tРќР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ...";
 		char p = _getch();
 		system("cls");
 		break;
@@ -1029,20 +969,20 @@ void saveClients(person*& head, person*& tail, person*& clients)
 		ofstream outClients(INDIVID_OUTPUT_FILE_LOCATION);
 		clients = head;
 		while (true) {
-			outClients	<< clients->Data.Surname	<< " " << clients->Data.Name	<< " "
-						<< clients->Data.Patronymic << " " << clients->Data.Address << " "
-						<< clients->Data.PhoneNum	<< " " << clients->Data.PayDay	<< " "
+			outClients	<<"Р¤РРћ: " << clients->Data.Surname << " " << clients->Data.Name << " "
+						<< clients->Data.Patronymic << " РђРґСЂРµСЃСЃ: " << clients->Data.Address << " РќРѕРјРµСЂ С‚РµР».: "
+						<< clients->Data.PhoneNum	<< " Р”РµРЅСЊ РѕРїР»Р°С‚С‹: " << clients->Data.PayDay	<< " РЎСѓРјРјР°: "
 						<< clients->Data.Summ		<< endl;
 			if (clients == tail) break;
 			clients = clients->next;
 		}
-		std::cout << "\n\n\tСохранено...";
+		std::cout << "\n\n\tРЎРѕС…СЂР°РЅРµРЅРѕРІ С„Р°Р№Р»Рµ " << INDIVID_OUTPUT_FILE_LOCATION << "...";
 		char p = _getch();
 		system("cls");
 		break; 
 	}
 	case(2): {
-		std::cout << "\n\n\tВведите навание выходного файла (без расширения, используя только буквы): ";
+		std::cout << "\n\n\tР’РІРµРґРёС‚Рµ РЅР°РІР°РЅРёРµ РІС‹С…РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р° (Р±РµР· СЂР°СЃС€РёСЂРµРЅРёСЏ, РёСЃРїРѕР»СЊР·СѓСЏ С‚РѕР»СЊРєРѕ Р±СѓРєРІС‹): ";
 		string newName;
 		cin.get();
 		getline(cin, newName);
@@ -1051,20 +991,20 @@ void saveClients(person*& head, person*& tail, person*& clients)
 		ofstream outClients(newName);
 		clients = head;
 		while (true) {
-			outClients << clients->Data.Surname << " " << clients->Data.Name << " "
-				<< clients->Data.Patronymic << " " << clients->Data.Address << " "
-				<< clients->Data.PhoneNum << " " << clients->Data.PayDay << " "
-				<< clients->Data.Summ << endl;
+			outClients	<<"Р¤РРћ: " << clients->Data.Surname << " " << clients->Data.Name << " "
+						<< clients->Data.Patronymic << " РђРґСЂРµСЃСЃ: " << clients->Data.Address << " РќРѕРјРµСЂ С‚РµР».: "
+						<< clients->Data.PhoneNum	<< " Р”РµРЅСЊ РѕРїР»Р°С‚С‹: " << clients->Data.PayDay	<< " РЎСѓРјРјР°: "
+						<< clients->Data.Summ		<< endl;
 			if (clients == tail) break;
 			clients = clients->next;
 		}
-		std::cout << "\n\n\tСохранено в файле "<<newName<<"...";
+		std::cout << "\n\n\tРЎРѕС…СЂР°РЅРµРЅРѕ РІ С„Р°Р№Р»Рµ "<<newName<<"...";
 		char p = _getch();
 		system("cls");
 		break; 
 	}
 	default: {
-		std::cout << "\n\n\tВведено невенрое значение...";
+		std::cout << "\n\n\tР’РІРµРґРµРЅРѕ РЅРµРІРµРЅСЂРѕРµ Р·РЅР°С‡РµРЅРёРµ...";
 		char p = _getch(); 
 		break; 
 	}
@@ -1073,28 +1013,15 @@ void saveClients(person*& head, person*& tail, person*& clients)
 //finished
 
 void downloadClients(person*& head, person*& tail, person*& clients){
-	while (true) {
-		if (tail == NULL && head == NULL) break;
-		clients = head;
-		if (clients == tail && clients == head) {
-			tail = NULL;
-			head = NULL;
-			delete clients;
-			clients = NULL;
-			break;
-		}
-		head = clients->next;
-		delete clients;
-	}
 	string defaultFileName = (INDIVID_INPUT_FILE_LOCATION);
-	std::cout << "\n\n\t1. Загрузтиь из файла с названием " << INDIVID_INPUT_FILE_LOCATION
-		<< " с исходным кодом\n\t2. Изменить название файла\n\t0. Выход\n\n\t";
+	std::cout << "\n\n\t1. Р—Р°РіСЂСѓР·С‚РёСЊ РёР· С„Р°Р№Р»Р° СЃ РЅР°Р·РІР°РЅРёРµРј " << INDIVID_INPUT_FILE_LOCATION
+		<< " СЃ РёСЃС…РѕРґРЅС‹Рј РєРѕРґРѕРј\n\t2. РР·РјРµРЅРёС‚СЊ РЅР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р°\n\t0. Р’С‹С…РѕРґ\n\n\t";
 	int inNum;
 	cin >> inNum;
 	system("cls");
 	switch (inNum) {
 	case(0): {
-		std::cout << "\n\n\tНажмите любую клавишу...";
+		std::cout << "\n\n\tРќР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ...";
 		char p = _getch();
 		system("cls");
 		break;
@@ -1104,19 +1031,19 @@ void downloadClients(person*& head, person*& tail, person*& clients){
 		ifstream inClients(INDIVID_INPUT_FILE_LOCATION);
 
 		if (inClients.bad()) {
-			std::cout << "\n\tОшибка ввода-вывода при чтении...";
+			std::cout << "\n\tРћС€РёР±РєР° РІРІРѕРґР°-РІС‹РІРѕРґР° РїСЂРё С‡С‚РµРЅРёРё...";
 			char p = _getch();
 			system("cls");
 			return;
 		}
 		else if (inClients.eof()) {
-			std::cout << "\n\tДостигнут конец файла...";
+			std::cout << "\n\tР”РѕСЃС‚РёРіРЅСѓС‚ РєРѕРЅРµС† С„Р°Р№Р»Р°...";
 			char p = _getch();
 			system("cls");
 			return;
 		}
 		else if (inClients.fail()) {
-			std::cout << "\n\tНеверный формат данных...";
+			std::cout << "\n\tРќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РґР°РЅРЅС‹С…...";
 			char p = _getch();
 			system("cls");
 			return;
@@ -1129,9 +1056,13 @@ void downloadClients(person*& head, person*& tail, person*& clients){
 			if (clients == NULL) {
 				clients = new person;
 				head = clients;
+				tail = clients;
 			}
 			else {
-				clients = clients->next = new person;
+				clients = tail;
+				clients->next = new person;
+				clients->next->prev = clients;
+				clients = clients->next;
 				tail = clients;
 			}
 			inClients.get();
@@ -1144,13 +1075,13 @@ void downloadClients(person*& head, person*& tail, person*& clients){
 			inClients>> clients->Data.Summ;
 		}
 
-		std::cout << "\n\n\tЗагруженно...";
+		std::cout << "\n\n\tР—Р°РіСЂСѓР¶РµРЅРЅРѕ РёР· С„Р°Р№Р»Рµ " << INDIVID_INPUT_FILE_LOCATION << "...";
 		char p = _getch();
 		system("cls");
 		break;
 	}
 	case(2): {
-		std::cout << "\n\n\tВведите навание выходного файла (без расширения, используя только буквы): ";
+		std::cout << "\n\n\tР’РІРµРґРёС‚Рµ РЅР°РІР°РЅРёРµ РІС‹С…РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р° (Р±РµР· СЂР°СЃС€РёСЂРµРЅРёСЏ, РёСЃРїРѕР»СЊР·СѓСЏ С‚РѕР»СЊРєРѕ Р±СѓРєРІС‹): ";
 		string newName;
 		cin.get();
 		getline(cin, newName);
@@ -1159,19 +1090,19 @@ void downloadClients(person*& head, person*& tail, person*& clients){
 		ifstream inClients(newName);
 
 		if (inClients.bad()) {
-			std::cout << "\n\tОшибка ввода-вывода при чтении...";
+			std::cout << "\n\tРћС€РёР±РєР° РІРІРѕРґР°-РІС‹РІРѕРґР° РїСЂРё С‡С‚РµРЅРёРё...";
 			char p = _getch();
 			system("cls");
 			return;
 		}
 		else if (inClients.eof()) {
-			std::cout << "\n\tДостигнут конец файла...";
+			std::cout << "\n\tР”РѕСЃС‚РёРіРЅСѓС‚ РєРѕРЅРµС† С„Р°Р№Р»Р°...";
 			char p = _getch();
 			system("cls");
 			return;
 		}
 		else if (inClients.fail()) {
-			std::cout << "\n\tНеверный формат данных...";
+			std::cout << "\n\tРќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РґР°РЅРЅС‹С…...";
 			char p = _getch();
 			system("cls");
 			return;
@@ -1202,19 +1133,19 @@ void downloadClients(person*& head, person*& tail, person*& clients){
 			inClients >> clients->Data.Summ;
 		}
 
-		std::cout << "\n\n\tЗагруженно из файле " << newName << "...";
+		std::cout << "\n\n\tР—Р°РіСЂСѓР¶РµРЅРЅРѕ РёР· С„Р°Р№Р»Рµ " << newName << "...";
 		char p = _getch();
 		system("cls");
 		break;
 	}
 	default: {
-		std::cout << "\n\n\tВведено невенрое значение...";
+		std::cout << "\n\n\tР’РІРµРґРµРЅРѕ РЅРµРІРµРЅСЂРѕРµ Р·РЅР°С‡РµРЅРёРµ...";
 		char p = _getch();
 		break;
 	}
 	}
 }
-
+//finished
 
 #pragma endregion
 
@@ -1225,86 +1156,113 @@ void downloadClients(person*& head, person*& tail, person*& clients){
 #pragma region additionalTask
 
 
-void TreeSort(int* arr, int size) {
-
-	struct BinaryTree {
-		BinaryTree* left, * right;
-		int Data;
-
-		BinaryTree(int&& _Data = int()) {
-			left = right = nullptr;
-			Data = forward<int>(_Data);
-		}
-		int* operator()(int arr[]) {
-			if (this->left)
-				arr = this->left->operator()(arr);
-			*arr++ = move(this->Data);
-			if (this->right)
-				arr = this->right->operator()(arr);
-			return arr;
-		}
-	}root(move(arr[0]));
-
-	for (int i = 1; i < size; i++) {
-		bool inserted = false;
-		BinaryTree* p_root = &root;
-		while (!inserted) {
-			if (arr[i] < p_root->Data) {
-				if (p_root->left) p_root = p_root->left;
-				else {
-					p_root->left = new BinaryTree(move(arr[i]));
-					inserted = true;
-				}
-			}
-			else {
-				if (p_root->right) p_root = p_root->right;
-				else {
-					p_root->right = new BinaryTree(move(arr[i]));
-					inserted = true;
-				}
-			}
-		}
-	}
-	root(arr);
-}
+enum class Additional_Menu {
+	Exit,
+	AddStr,
+	DelStr,
+	ShowStr,
+	SaveStr,
+	DownloadStr
+};
 
 void additionalTask() {
-	/*Реализуйте древесную сортировку массива целых чисел на основе структуры бинарного
-	дерева. Учтите возможность наличия одинаковых элементов в массиве (такие элементы не
-	должны пропасть при сортировке).*/
+	/*
+	РћР±РµСЃРїРµС‡СЊС‚Рµ РІСЃСЋ СЂР°Р±РѕС‚Сѓ СЃ С„Р°Р№Р»Р°РјРё СЃ РїРѕРјРѕС‰СЊСЋ РїРµСЂРµРЅР°РїСЂР°РІР»РµРЅРёСЏ СЃС‚Р°РЅРґР°СЂС‚РЅС‹С… РїРѕС‚РѕРєРѕРІ
+	С„СѓРЅРєС†РёРµР№ freopen_s().
+	РџСЂРѕРіСЂР°РјРјР° РґРѕР»Р¶РЅР° РІС‹РїРѕР»РЅСЏС‚СЊ РїСЂРѕСЃС‚СѓСЋ СЂР°Р±РѕС‚Сѓ СЃ РјР°СЃСЃРёРІРѕРј СЃС‚СЂРѕРє. РџСЂРё Р·Р°РїСѓСЃРєРµ
+	РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ РЅР° РІС‹Р±РѕСЂ РїСЂРµРґРѕСЃС‚Р°РІР»СЏРµС‚СЃСЏ РЅРµСЃРєРѕР»СЊРєРѕ РґРµР№СЃС‚РІРёР№:
+		п‚· РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РјРѕР¶РµС‚ РґРѕР±Р°РІРёС‚СЊ РЅРѕРІСѓСЋ СЃС‚СЂРѕРєСѓ РІ РјР°СЃСЃРёРІ.
+		п‚· РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РјРѕР¶РµС‚ СѓРґР°Р»РёС‚СЊ СЃС‚СЂРѕРєСѓ РёР· РјР°СЃСЃРёРІР° РїРѕ РЅРѕРјРµСЂСѓ (РїРѕСЂСЏРґРѕРє СЃС‚СЂРѕРє РґРѕР»Р¶РµРЅ РѕСЃС‚Р°С‚СЊСЃСЏ С‚РѕС‚ Р¶Рµ).
+		п‚· РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РјРѕР¶РµС‚ РІС‹РІРµСЃС‚Рё РјР°СЃСЃРёРІ РЅР° СЌРєСЂР°РЅ.
+		п‚· РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РјРѕР¶РµС‚ СЃРѕС…СЂР°РЅРёС‚СЊ РјР°СЃСЃРёРІ СЃС‚СЂРѕРє РІ С„Р°Р№Р»Рµ.
+		п‚· РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РјРѕР¶РµС‚ Р·Р°РіСЂСѓР·РёС‚СЊ РјР°СЃСЃРёРІ СЃС‚СЂРѕРє РёР· С„Р°Р№Р»Р°.
+		*/
+	string* str = NULL;
+	int size = 0;
+	while (true) {
+		cout	<< "\n\t1. Р”РѕР±Р°РІРёС‚СЊ СЃС‚СЂРѕРєСѓ"
+				<< "\n\t2. РЈРґР°Р»РёС‚СЊ СЃС‚СЂРѕРєСѓ" 
+				<< "\n\t3. Р’С‹РІРµСЃС‚Рё СЃС‚СЂРѕРєРё" 
+				<< "\n\t4. РЎРѕС…СЂР°РЅРёС‚СЊ СЃС‚СЂРѕРєРё" 
+				<< "\n\t5. Р—Р°РіСЂСѓР·РёС‚СЊ СЃС‚СЂРѕРєРё"
+				<< "\n\t0. Р’С‹С…РѕРґ\n\n\t";
+		int menuNum;
+		cin >> menuNum;
+		system("cls");
+		switch ((Additional_Menu)menuNum) 
+		{
+			case Additional_Menu::Exit: 
+				return;
 
-	/*BinaryTree* root = NULL;
-	root = new BinaryTree;
-	BinaryTree* leftBranch = NULL;
-	BinaryTree* rightBranch = NULL;
-	leftBranch = root;
-	rightBranch = root;
-	root->Data = rand() % 100;*/
-	srand(time(NULL));
+			case Additional_Menu::AddStr: 
+			{
+				cout << "\n\tР”РѕР±Р°РІРёС‚СЊ СЃС‚СЂРѕРєСѓ\n\t0. Р’С‹С…РѕРґ\n\n\t";
+				string inputStr;
+				cin.get();
+				getline(cin, inputStr);
+				if (inputStr == "0") break;
+				size++;
+				if (str == NULL) str = new string[size];
+				else {
+					string *temp = new string[size];
+					for (int i = 0; i < size-1; i++) {
+						temp[i] = str[i];
+					}
+					delete[] str;
+					str = new string[size];
+					for (int i = 0; i < size - 1; i++) {
+						str[i] = temp[i];
+					}
+					delete[] temp;
+				}
+				str[size - 1] = inputStr;
+				system("cls");
+				//cout << str[size - 1];
+				break;
+			}
 
-	std::cout << "\n\n\tВведите размер саортируемого массива: ";
-	int size;
-	cin >> size;
-	system("cls");
-	int* arr = new int[size];
-	std::cout << "\n\n\tБез сортировки: ";
-	for (int i = 0; i < size; i++) {
-		arr[i] = rand() % 100;
-		std::cout << arr[i] << " ";
+			case Additional_Menu::DelStr: 
+			{
+				cout << endl << "2DelStr";
+				break;
+			}
+
+			case Additional_Menu::ShowStr: 
+			{
+				if (str == NULL) {
+					cout << "\n\tРЅРµС‡РµРіРѕ РІС‹РІРѕРґРёС‚СЊ... ";
+					char p = _getch();
+					system("cls");
+					break;
+				}
+				cout << "\n\tР’С‹РІРѕРґ СЃС‚СЂРѕРєСѓ\n\n\t";
+				for (int i = 0; i < size; i++) {
+					cout << str[i]<<"\n\t";
+				}
+				break;
+			}
+
+			case Additional_Menu::SaveStr: 
+			{
+				cout << endl << "4SaveStr";
+				break;
+			}
+
+			case Additional_Menu::DownloadStr: 
+			{
+				cout << endl << "5DownloadStr";
+				break;
+			}
+
+			default: 
+			{
+				cout << "";
+				char p = _getch();
+				system("cls");
+			}
+		}
+		
 	}
-
-	TreeSort(arr, size);
-
-	std::cout << "\n\n\tОтсортирован: ";
-	for (int i = 0; i < size; i++) {
-		std::cout << arr[i] << " ";
-	}
-
-	std::cout << "\n\n\tНажмите любую клавишу что-бы вернуться в меню... ";
-	char p = _getch();
-	std::system("cls");
-	return;
-
 }
 
 
