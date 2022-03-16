@@ -70,12 +70,16 @@ void firstGeneralTask() {
 
 	int* arr;
 	int size = 0;
+	FILE* file = nullptr;
+	
+	fopen_s(&file, FIRST_INPUT_FILE_LOCATION, "r");
+	
+	if (file == NULL) {
+		cout << "\n\tОшибка... ";
+		char p = _getch();
+	}
 
-	ifstream inputArr;
-
-	inputArr.open(FIRST_INPUT_FILE_LOCATION);
-
-	inputArr >> size;
+	fscanf_s(file, "%d", &size);
 	arr = new int[size];
 
 	if (size == 0) {
@@ -87,10 +91,13 @@ void firstGeneralTask() {
 
 	std::cout << "\n\n\tReading Mass: ";
 	for (int i = 0; i < size; i++) {
-		inputArr >> arr[i];
+		int temp;
+		fscanf_s(file, "%d", &temp);
+		arr[i] = temp;
 		std::cout << arr[i] << ", ";
 	}
-	inputArr.close();
+	fclose(file);
+	file = NULL;
 
 	for (int i = 0; i < size; i++) {
 		for (int j = 0; j < size-i; j++) {
@@ -102,11 +109,13 @@ void firstGeneralTask() {
 		}
 	}
 
-	ofstream outputArr(FIRST_OUTPUT_FILE_LOCATION);
+	fopen_s(&file, FIRST_OUTPUT_FILE_LOCATION, "w");
 
-	for (int i = 0; i < size; i++) {
-		outputArr << arr[i]<<endl;
-	}
+	for (int i = 0; i < size; i++)
+		fprintf_s(file, "%d\n", arr[i]);
+
+	fclose(file);
+	delete file;
 
 	std::cout << "\n\n\tSorter Mass: ";
 	for (int i = 0; i < size; i++) {
@@ -155,13 +164,16 @@ void secondGeneralTask() {
 	while (true) {
 		inputStudent.open(SECOND_INPUT_FILE_LOCATION);
 	if (!inputStudent.eof()) {
+
 		inputStudent >> size;
+		
 		if (size == 0) {
 			std::cout << "\n\n\tОшибка в исходном файле или путь файла был изменен... ";
 			char p = _getch();
 			std::system("cls");
 			return;
 		}
+		
 		Num = new int[size];			
 		Name = new string[size];		
 		Surame = new string[size];		
