@@ -1179,7 +1179,8 @@ void additionalTask() {
 		*/
 	string* str = NULL;
 	int size = 0;
-	while (true) {
+	while (true)
+	{
 		cout	<< "\n\t1. Добавить строку"
 				<< "\n\t2. Удалить строку" 
 				<< "\n\t3. Вывести строки" 
@@ -1204,18 +1205,26 @@ void additionalTask() {
 				size++;
 				if (str == NULL) str = new string[size];
 				else {
+
 					string *temp = new string[size];
-					for (int i = 0; i < size-1; i++) {
+
+					for (int i = 0; i < size-1; i++)
+					{
 						temp[i] = str[i];
 					}
+
 					delete[] str;
+
 					str = new string[size];
-					for (int i = 0; i < size - 1; i++) {
+
+					for (int i = 0; i < size - 1; i++) 
+					{
 						str[i] = temp[i];
 					}
+
 					delete[] temp;
 				}
-				str[size - 1] = inputStr;
+				str[size-1] = inputStr;
 				system("cls");
 				//cout << str[size - 1];
 				break;
@@ -1223,14 +1232,87 @@ void additionalTask() {
 
 			case Additional_Menu::DelStr: 
 			{
-				cout << endl << "2DelStr";
+				if (size == 0)
+				{
+					cout << "\n\tНечего удалять... ";
+					char p = _getch();
+					system("cls");
+					break;
+				}
+
+				if (size == 1)
+				{
+					cout << "\n\tУдалёнa последняя строка... ";
+					delete[] str;
+					size = 0;
+					char p = _getch();
+					system("cls");
+					break;
+				}
+
+				cout << "\n\tУдаление строки\n\n\tВыберете строку:\n\n\t";
+
+				for (int i = 0; i < size; i++)
+				{
+					cout << i + 1 << ": " << str[i]<<"\n\t";
+				}
+
+				int inI;
+				cin >> inI;
+				system("cls");
+
+				cout << "\n\tУдалить " << str[inI - 1] << "\n\t1. Да\t0. Выход\n\t";
+
+				int inputI;
+				cin >> inputI;
+				system("cls");
+
+				switch (inputI) {
+					case(0): break;
+					case(1):
+					{
+						size--;
+
+						string* temp = new string[size];
+
+						for (int i = 0; i < inI; i++) 
+						{
+							temp[i] = str[i];
+						}
+
+						for (int i = inI; i < size; i++) 
+						{
+							temp[i] = str[i + 1];
+						}
+
+						delete[] str;
+
+						str = new string[size];
+
+						for (int i = 0; i < size; i++) 
+						{
+							str[i] = temp[i];
+						}
+
+						delete[] temp;
+					}
+
+					default:
+					{
+						cout << "Введено невеное значение... ";
+						char p = _getch();
+						system("cls");
+						break;
+					}
+				}
+
 				break;
 			}
 
 			case Additional_Menu::ShowStr: 
 			{
-				if (str == NULL) {
-					cout << "\n\tнечего выводить... ";
+				if (size == 0) {
+					cout << "\n\tНечего выводить... ";
 					char p = _getch();
 					system("cls");
 					break;
