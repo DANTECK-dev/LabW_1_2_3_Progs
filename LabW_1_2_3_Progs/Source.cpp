@@ -8,7 +8,7 @@
 #include <cmath>
 #include <time.h>
 #include <random>
-#include <stdlib.h>
+//#include <stdlib.h>
 #include <malloc.h>
 #include <algorithm>
 #include <cstddef>
@@ -1167,6 +1167,7 @@ enum class Additional_Menu {
 };
 
 void additionalTask() {
+
 	/*
 	Обеспечьте всю работу с файлами с помощью перенаправления стандартных потоков
 	функцией freopen_s().
@@ -1178,6 +1179,7 @@ void additionalTask() {
 		 Пользователь может сохранить массив строк в файле.
 		 Пользователь может загрузить массив строк из файла.
 		*/
+
 	string* str = NULL;
 	int size = 0;
 	while (true)
@@ -1346,7 +1348,7 @@ void additionalTask() {
 					break;
 				}
 
-				FILE* file = NULL;
+				FILE* file = nullptr;
 
 				freopen_s(&file, fileNameOut, "w", stdout);
 
@@ -1355,20 +1357,15 @@ void additionalTask() {
 					cout << str[i] << endl;
 				}
 
+				//fflush(stdout);
 				//fclose(file);
+				//file = nullptr;
 				freopen_s(&file, "CON", "w", stdout);
 
 				cout << endl << "\n\tСохранено... ";
 				char p = _getch();
 				system("cls");
-				
-				/*else
-				{
-					cout << "\n\tОшибка открытия... ";
-					freopen_s(&file, "CON", "w", stdout);
-					char p = _getch();
-					system("cls");
-				}*/
+
 				break;
 			}
 
