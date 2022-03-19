@@ -148,7 +148,7 @@ void firstGeneralTask() {
 	файл.*/
 
 #define SECOND_INPUT_FILE_LOCATION		"Input_Students.txt"
-#define SECOND_OUTPUT_FILE_LOCATION	"Output_Students.txt"
+#define SECOND_OUTPUT_FILE_LOCATION		"Output_Students.txt"
 
 void secondGeneralTask() {
 	fstream inputStudent;
