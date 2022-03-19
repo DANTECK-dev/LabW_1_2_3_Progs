@@ -8,12 +8,14 @@
 #include <cmath>
 #include <time.h>
 #include <random>
-//#include <stdlib.h>
+#include <stdlib.h>
 #include <malloc.h>
 #include <algorithm>
 #include <cstddef>
 #include <utility>
 #include <fstream>
+#include <io.h> 
+//#include<zconf.h>
 
 using namespace std;
 
@@ -1192,7 +1194,7 @@ void additionalTask() {
 				<< "\n\t0. Выход\n\n\t";
 		int menuNum;
 		cin >> menuNum;
-		system("cls");
+		//system("cls");
 		switch ((Additional_Menu)menuNum) 
 		{
 			case Additional_Menu::Exit: 
@@ -1228,7 +1230,7 @@ void additionalTask() {
 					delete[] temp;
 				}
 				str[size-1] = inputStr;
-				system("cls");
+				//system("cls");
 				//cout << str[size - 1];
 				break;
 			}
@@ -1239,7 +1241,7 @@ void additionalTask() {
 				{
 					cout << "\n\tНечего удалять... ";
 					char p = _getch();
-					system("cls");
+					//system("cls");
 					break;
 				}
 
@@ -1249,7 +1251,7 @@ void additionalTask() {
 					delete[] str;
 					size = 0;
 					char p = _getch();
-					system("cls");
+					//system("cls");
 					break;
 				}
 
@@ -1262,13 +1264,13 @@ void additionalTask() {
 
 				int inI;
 				cin >> inI;
-				system("cls");
+				//system("cls");
 
 				cout << "\n\tУдалить " << str[inI - 1] << "\n\t1. Да\t0. Выход\n\t";
 
 				int inputI;
 				cin >> inputI;
-				system("cls");
+				//system("cls");
 
 				switch (inputI) {
 					case(0): break;
@@ -1304,7 +1306,7 @@ void additionalTask() {
 					{
 						cout << "Введено невеное значение... ";
 						char p = _getch();
-						system("cls");
+						//system("cls");
 						break;
 					}
 				}
@@ -1317,7 +1319,7 @@ void additionalTask() {
 				if (size == 0) {
 					cout << "\n\tНечего выводить... ";
 					char p = _getch();
-					system("cls");
+					//system("cls");
 					break;
 				}
 				cout << "\n\tВывод строк(и): \n\n\t";
@@ -1328,9 +1330,48 @@ void additionalTask() {
 			}
 
 			case Additional_Menu::SaveStr: 
-			{
+			{	
+			#pragma region restore_stdin
+				/*int old;
+				FILE* DataFile;
+
+				old = _dup(0);   // "old" now refers to "stdin"   
+								   // Note:  file descriptor 0 == "stdin"   
+				if (old == -1)
+				{
+					perror("_dup( 1 ) failure");
+					exit(1);
+				}
+
+				if (fopen_s(&DataFile, "input.txt", "r") != 0)
+				{
+					puts("Can't open file 'data'\n");
+					exit(1);
+				}
+
+				// stdin now refers to file "data"   
+				if (-1 == _dup2(_fileno(DataFile), 0))
+				{
+					perror("Can't _dup2 stdin");
+					exit(1);
+				}
+				int n;
+				cin >> n;
+				cout << n << std::endl;
+
+				_flushall();
+				fclose(DataFile);*/
+			#pragma endregion
+				//int old;
+				//old = _dup(0);
+				//int savestdin = _fileno(stdin);
+				//_dup2(_fileno(stdout), 0);
+
+				//#pragma warning(suppress : 4996) savestdin = dup(savestdin);
+
 				cout << endl << "\n\tВведите имя файла (без расширения): ";
 				char fileNameOut[100];
+				//cin.get();
 				cin >> fileNameOut;
 
 				int counter = strlen(fileNameOut);
@@ -1344,12 +1385,12 @@ void additionalTask() {
 				{
 					cout << "\n\tНечего выводить... ";
 					char p = _getch();
-					system("cls");
+					//system("cls");
 					break;
 				}
-
+				
 				FILE* file = nullptr;
-
+				
 				freopen_s(&file, fileNameOut, "w", stdout);
 
 				for (int i = 0; i < size; i++)
@@ -1357,14 +1398,17 @@ void additionalTask() {
 					cout << str[i] << endl;
 				}
 
-				//fflush(stdout);
-				//fclose(file);
-				//file = nullptr;
 				freopen_s(&file, "CON", "w", stdout);
 
 				cout << endl << "\n\tСохранено... ";
 				char p = _getch();
-				system("cls");
+				
+				// Restore original stdin 
+				//_flushall();
+				//#pragma warning(suppress : 4996) stdout = _dup2(old, 0);
+
+				
+				//system("cls");
 
 				break;
 			}
@@ -1436,7 +1480,7 @@ void additionalTask() {
 			{
 				cout << "\n\tОшибка... ";
 				char p = _getch();
-				system("cls");
+				//system("cls");
 			}
 		}
 		
