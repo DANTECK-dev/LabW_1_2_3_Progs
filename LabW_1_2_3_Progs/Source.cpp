@@ -1,4 +1,5 @@
-﻿#include <iostream>
+﻿#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
 #include <Windows.h>
 #include <stdio.h>
 #include <conio.h>
@@ -460,7 +461,7 @@ void addClients(person*& head, person*& tail, person*& clients) {
 };
 //finished
 
-void sortClients(person*& head, person*& tail, person*& clients) {
+void sortClients		(person*& head, person*& tail, person*& clients) {
 	if (tail == NULL && head == NULL) {
 		std::cout << "\n\n\tНет данных клиентов для сортировки...";
 		char p = _getch();
@@ -534,7 +535,7 @@ void sortClients(person*& head, person*& tail, person*& clients) {
 }
 //finished
 
-void transform(person*& head, person*& tail, person*& clients) {
+void transform			(person*& head, person*& tail, person*& clients) {
 	std::cout << "\n\n\tКакие данные изменить\n"
 		<< "\n\t1. Фамилию - " << clients->Data.Surname
 		<< "\n\t2. Имя - " << clients->Data.Name
@@ -563,7 +564,7 @@ void transform(person*& head, person*& tail, person*& clients) {
 	}
 	std::system("cls");
 }
-void transformClients(person*& head, person*& tail, person*& clients) {
+void transformClients	(person*& head, person*& tail, person*& clients) {
 	if (tail == NULL && head == NULL) {
 		std::cout << "\n\n\tНет данных клиентов для изменения...";
 		char p = _getch();
@@ -662,7 +663,7 @@ void transformClients(person*& head, person*& tail, person*& clients) {
 }
 //finished
 
-void swapAndDelClients(person*& head, person*& tail, person*& clients) {
+void swapAndDelClients	(person*& head, person*& tail, person*& clients) {
 	if (clients != head && clients != tail) {
 		clients->prev->next = clients->next;
 		clients->next->prev = clients->prev;
@@ -681,7 +682,7 @@ void swapAndDelClients(person*& head, person*& tail, person*& clients) {
 	}
 	delete clients;
 }
-void delClients(person*& head, person*& tail, person*& clients) {
+void delClients			(person*& head, person*& tail, person*& clients) {
 	if (tail == NULL && head == NULL) {
 		std::cout << "\n\n\tНет данных клиентов для удаления...";
 		char p = _getch();
@@ -813,7 +814,7 @@ void delClients(person*& head, person*& tail, person*& clients) {
 }
 //finished
 
-void showClients(person*& head, person*& tail, person*& clients) {
+void showClients		(person*& head, person*& tail, person*& clients) {
 	if (tail == NULL && head == NULL) {
 		std::cout << "\n\n\tНет данных клиентов для вывода...";
 		char p = _getch();
@@ -911,11 +912,11 @@ void showClients(person*& head, person*& tail, person*& clients) {
 }
 //finished
 
-void show(person*& clients) {
+void show				(person*& clients) {
 	std::cout << "\n\n\tФИО: " << clients->Data.Surname << " " << clients->Data.Name << " " << clients->Data.Patronymic << " Адресс: "
 		<< clients->Data.Address << "\n\tТелефоный номер: " << clients->Data.PhoneNum << " День оплаты: " << clients->Data.PayDay << " Сумма: " << clients->Data.Summ;
 }
-void searchClients(person*& head, person*& tail, person*& clients) {
+void searchClients		(person*& head, person*& tail, person*& clients) {
 	if (tail == NULL && head == NULL) {
 		std::cout << "\n\n\tНет данных клиентов для поиска...";
 		char p = _getch();
@@ -944,7 +945,7 @@ void searchClients(person*& head, person*& tail, person*& clients) {
 }
 //finished
 
-void saveClients(person*& head, person*& tail, person*& clients)
+void saveClients		(person*& head, person*& tail, person*& clients)
 {
 	if (tail == NULL && head == NULL) {
 		std::cout << "\n\n\tНет данных клиентов для сохранения...";
@@ -1012,7 +1013,7 @@ void saveClients(person*& head, person*& tail, person*& clients)
 }
 //finished
 
-void downloadClients(person*& head, person*& tail, person*& clients){
+void downloadClients	(person*& head, person*& tail, person*& clients){
 	string defaultFileName = (INDIVID_INPUT_FILE_LOCATION);
 	std::cout << "\n\n\t1. Загрузтиь из файла с названием " << INDIVID_INPUT_FILE_LOCATION
 		<< " с исходным кодом\n\t2. Изменить название файла\n\t0. Выход\n\n\t";
@@ -1162,7 +1163,7 @@ enum class Additional_Menu {
 	DelStr,
 	ShowStr,
 	SaveStr,
-	DownloadStr
+	LoadStr
 };
 
 void additionalTask() {
@@ -1317,7 +1318,7 @@ void additionalTask() {
 					system("cls");
 					break;
 				}
-				cout << "\n\tВывод строку\n\n\t";
+				cout << "\n\tВывод строк(и): \n\n\t";
 				for (int i = 0; i < size; i++) {
 					cout << str[i]<<"\n\t";
 				}
@@ -1326,19 +1327,117 @@ void additionalTask() {
 
 			case Additional_Menu::SaveStr: 
 			{
-				cout << endl << "4SaveStr";
+				cout << endl << "\n\tВведите имя файла (без расширения): ";
+				char fileNameOut[100];
+				cin >> fileNameOut;
+
+				int counter = strlen(fileNameOut);
+				fileNameOut[counter] = '.';
+				fileNameOut[counter + 1] = 't';
+				fileNameOut[counter + 2] = 'x';
+				fileNameOut[counter + 3] = 't';
+				fileNameOut[counter + 4] = '\0';
+
+				if (size == 0)
+				{
+					cout << "\n\tНечего выводить... ";
+					char p = _getch();
+					system("cls");
+					break;
+				}
+
+				FILE* file = NULL;
+
+				freopen_s(&file, fileNameOut, "w", stdout);
+
+				for (int i = 0; i < size; i++)
+				{
+					cout << str[i] << endl;
+				}
+
+				//fclose(file);
+				freopen_s(&file, "CON", "w", stdout);
+
+				cout << endl << "\n\tСохранено... ";
+				char p = _getch();
+				system("cls");
+				
+				/*else
+				{
+					cout << "\n\tОшибка открытия... ";
+					freopen_s(&file, "CON", "w", stdout);
+					char p = _getch();
+					system("cls");
+				}*/
 				break;
 			}
 
-			case Additional_Menu::DownloadStr: 
+			case Additional_Menu::LoadStr: 
 			{
-				cout << endl << "5DownloadStr";
+				cout << endl << "\n\tВведите имя файла (без расширения): ";
+				char fileNameIn[100];
+				cin >> fileNameIn;
+
+				cout << "\n\tВведите количество строк: ";
+				int s;
+				cin >> s;
+
+				int counter = strlen(fileNameIn);
+				fileNameIn[counter] = '.';
+				fileNameIn[counter + 1] = 't';
+				fileNameIn[counter + 2] = 'x';
+				fileNameIn[counter + 3] = 't';
+				fileNameIn[counter + 4] = '\0';
+
+				FILE* file = NULL;
+
+				freopen_s(&file, fileNameIn, "r", stdin);
+
+				if (file != NULL) {
+					cout << "\n\tФайл успешно откыт\n\t";
+					for (int i = 0; i < s; i++)
+					{
+						size++;
+						if (str == NULL) str = new string[size];
+						else
+						{
+							string* temp = new string[size];
+
+							for (int i = 0; i < size - 1; i++)
+							{
+								temp[i] = str[i];
+							}
+
+							delete[] str;
+
+							str = new string[size];
+
+							for (int i = 0; i < size - 1; i++)
+							{
+								str[i] = temp[i];
+							}
+
+							delete[] temp;
+						}
+						getline(cin, str[size - 1]);
+						cout << "\n\tДобавлена строка: " << str[size-1];
+					}
+					cout << endl;
+					//fclose(file);
+					freopen_s(&file, "CON", "r", stdin);
+				}
+				else
+				{
+					cout << "\n\tОшибка открытия... ";
+					freopen_s(&file, "CON", "r", stdin);
+					char p = _getch();
+					system("cls");
+				}
 				break;
 			}
-
 			default: 
 			{
-				cout << "";
+				cout << "\n\tОшибка... ";
 				char p = _getch();
 				system("cls");
 			}
